@@ -1,0 +1,85 @@
+{
+  "description": "One check run failed and one commit status errored.",
+  "input": {
+    "pr": "octo-org/widgets#44"
+  },
+  "expected": {
+    "verdict": "not_ready",
+    "reasons": ["checks_failing"]
+  },
+  "response": {
+    "data": {
+      "repository": {
+        "pullRequest": {
+          "url": "https://github.com/octo-org/widgets/pull/44",
+          "state": "OPEN",
+          "isDraft": false,
+          "mergeable": "MERGEABLE",
+          "reviewDecision": "APPROVED",
+          "headRefOid": "9f4c2e71b3a8d6f0e5c4b2a19876543210fedcba",
+          "body": "Retries failed webhook deliveries with exponential backoff.\n\nCloses #17\n\n## Testing\n\n- [x] `npm test`\n- [x] Replayed a failed delivery against a local receiver",
+          "closingIssuesReferences": {
+            "totalCount": 1
+          },
+          "reviewRequests": {
+            "nodes": []
+          },
+          "commits": {
+            "totalCount": 2,
+            "nodes": [
+              {
+                "commit": {
+                  "oid": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b",
+                  "signature": {
+                    "isValid": true
+                  }
+                }
+              },
+              {
+                "commit": {
+                  "oid": "9f4c2e71b3a8d6f0e5c4b2a19876543210fedcba",
+                  "signature": {
+                    "isValid": true
+                  }
+                }
+              }
+            ]
+          },
+          "headCommit": {
+            "nodes": [
+              {
+                "commit": {
+                  "oid": "9f4c2e71b3a8d6f0e5c4b2a19876543210fedcba",
+                  "statusCheckRollup": {
+                    "contexts": {
+                      "totalCount": 3,
+                      "nodes": [
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS"
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "test (22)",
+                          "status": "COMPLETED",
+                          "conclusion": "FAILURE"
+                        },
+                        {
+                          "__typename": "StatusContext",
+                          "context": "ci/lint",
+                          "state": "ERROR"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

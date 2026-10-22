@@ -1,0 +1,49 @@
+{
+  "name": "pr-ready-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that tells an agent whether a GitHub pull request is ready to merge, and what to fix when it is not.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "github",
+    "pull-request",
+    "ci",
+    "agents"
+  ],
+  "homepage": "https://github.com/fabriciopirini/pr-ready-mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabriciopirini/pr-ready-mcp.git"
+  },
+  "license": "MIT",
+  "author": "Fabricio Tramontano Pirini",
+  "type": "module",
+  "bin": {
+    "pr-ready-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "llms.txt",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check .",
+    "test": "node --test test/*.test.ts",
+    "docs": "node scripts/gen-docs.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.2",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

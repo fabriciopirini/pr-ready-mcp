@@ -1,0 +1,22 @@
+# pr-ready-mcp
+
+> MCP server (stdio) with two read-only tools: `pr_readiness` decides whether a GitHub pull request is ready to merge from live GitHub data, and `pr_body_lint` checks a PR description. Run with `npx -y pr-ready-mcp`; auth from `GITHUB_TOKEN`, `GH_TOKEN` or `gh auth token`.
+
+Use `pr_readiness` before claiming a PR is ready, green or done. Input: `{"pr": "owner/repo#123"}` (a PR URL and `owner/repo/123` also work). After a push, add `"expected_head_sha": "<git rev-parse HEAD>"` so the verdict cannot describe an older commit.
+
+Read the answer this way:
+
+- `verdict` is `ready`, `not_ready`, `merged` or `closed`. Only `ready` means the PR can be called ready.
+- `head_sha` is the commit the verdict is for. If you push again, call again.
+- `reasons` lists every blocker as `{code, detail, fix}`. Do what `fix` says, then call again. Codes: `draft`, `conflicts`, `mergeable_unknown`, `checks_failing`, `checks_pending`, `unsigned_commits`, `stale_head`, `body_lint`, `too_large_to_verify`.
+- `checks_pending` and `mergeable_unknown` clear on their own: wait, then call again.
+- `facts.review_decision` and `facts.requested_reviewers` are informational and never block.
+
+Use `pr_body_lint` with `{"pr": ...}` for a published PR or `{"body": "..."}` for a draft. Rules: `empty_body`, `unchecked_box`, `todo_marker`, `missing_linked_issue` (only with `"require_linked_issue": true`). Skip rules with `"ignore_rules": [...]`. Text inside HTML comments and code is ignored.
+
+Errors (bad PR reference, PR not found, no token) come back as tool results with `isError: true` and a message saying what to change.
+
+## Docs
+
+- [README](https://github.com/fabriciopirini/pr-ready-mcp/blob/main/README.md): install and client configuration
+- [Tool reference](https://github.com/fabriciopirini/pr-ready-mcp/blob/main/docs/tools.md): full input and output JSON schemas, generated from the server

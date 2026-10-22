@@ -1,0 +1,86 @@
+{
+  "description": "Body with an unchecked box, a TODO and no linked issue in a repo that requires one.",
+  "input": {
+    "pr": "octo-org/widgets#48",
+    "require_linked_issue": true
+  },
+  "expected": {
+    "verdict": "not_ready",
+    "reasons": ["body_lint"]
+  },
+  "response": {
+    "data": {
+      "repository": {
+        "pullRequest": {
+          "url": "https://github.com/octo-org/widgets/pull/48",
+          "state": "OPEN",
+          "isDraft": false,
+          "mergeable": "MERGEABLE",
+          "reviewDecision": "APPROVED",
+          "headRefOid": "9f4c2e71b3a8d6f0e5c4b2a19876543210fedcba",
+          "body": "Retries failed webhook deliveries.\n\n## Testing\n\n- [x] `npm test`\n- [ ] Replay a failed delivery\n\nTODO: document the backoff limits\n\n<!-- TODO in a template comment is ignored -->",
+          "closingIssuesReferences": {
+            "totalCount": 0
+          },
+          "reviewRequests": {
+            "nodes": []
+          },
+          "commits": {
+            "totalCount": 2,
+            "nodes": [
+              {
+                "commit": {
+                  "oid": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b",
+                  "signature": {
+                    "isValid": true
+                  }
+                }
+              },
+              {
+                "commit": {
+                  "oid": "9f4c2e71b3a8d6f0e5c4b2a19876543210fedcba",
+                  "signature": {
+                    "isValid": true
+                  }
+                }
+              }
+            ]
+          },
+          "headCommit": {
+            "nodes": [
+              {
+                "commit": {
+                  "oid": "9f4c2e71b3a8d6f0e5c4b2a19876543210fedcba",
+                  "statusCheckRollup": {
+                    "contexts": {
+                      "totalCount": 3,
+                      "nodes": [
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS"
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "test (22)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS"
+                        },
+                        {
+                          "__typename": "StatusContext",
+                          "context": "ci/lint",
+                          "state": "SUCCESS"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
