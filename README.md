@@ -4,6 +4,14 @@ An MCP server for people who let coding agents open and look after pull requests
 
 It is not GitHub's merge button, permission to merge, or a code review. Its rule is stricter than GitHub's merge eligibility, on purpose (see [the rule](#when-is-a-pr-ready)).
 
+One call, end to end: the agent asks about a PR, the tool reads GitHub once, applies the rule, and answers with a verdict pinned to a commit and a time.
+
+![Sequence diagram: a coding agent calls pr_readiness with a PR and, after a push, the commit it expects; the tool sends one read-only GraphQL query to GitHub, applies the rule to the snapshot, and returns a verdict with reasons, each naming an owner, plus head_sha and checked_at.](docs/how-it-works.svg)
+
+How the verdict is decided: a wrong head is `not_ready` even on a merged or closed PR, merged and closed PRs are otherwise reported rather than judged, and an open PR is `ready` only when no reason applies.
+
+![Flowchart: the head commit is compared with the expected sha; a mismatch is stale_head and the verdict is not_ready; a merged or closed PR with the right head is reported as merged or closed; an open PR collects every applicable reason about merge state, checks on the head commit, review and merge queue, each with an owner; ready only when no reason is listed.](docs/verdict.svg)
+
 ## Why
 
 Agents say "green" too early. They read a check list before the last check finished. They read checks that belong to the previous push. They see 100 passing checks and miss the five failures listed after them. They report "CI passed" on a PR that still needs a review, or call an unknown merge state "fine". Each mistake is small. The person who trusted the claim finds out at merge time.
