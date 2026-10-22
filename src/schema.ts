@@ -1,99 +1,84 @@
 import { z } from "zod";
 
-export const LINT_RULES = ["empty_body", "unchecked_box", "todo_marker", "missing_linked_issue"] as const;
 export const REASON_CODES = [
   "draft",
   "conflicts",
   "mergeable_unknown",
+  "behind_base",
   "checks_failing",
   "checks_pending",
-  "unsigned_commits",
+  "checks_missing",
   "stale_head",
-  "body_lint",
-  "too_large_to_verify",
+  "review_required",
+  "changes_requested",
+  "merge_queue",
+  "unsupported_merge_state",
+  "blocked_by_branch_rule",
 ] as const;
 
-const pr = z
-  .string()
-  .describe(
-    'The pull request: a URL ("https://github.com/octo-org/widgets/pull/42"), "octo-org/widgets#42" or "octo-org/widgets/42".',
-  );
-
-export const lintOptions = {
-  require_linked_issue: z
-    .boolean()
-    .default(false)
-    .describe('Set true when the repository requires every PR to reference an issue (e.g. "Closes #12").'),
-  ignore_rules: z.array(z.enum(LINT_RULES)).default([]).describe("Lint rules to skip."),
-};
-
-export const readinessInput = z.object({
-  pr,
+export const readinessInput = z.strictObject({
+  pr: z
+    .string()
+    .describe('The pull request: "owner/repo#42" or "https://github.com/owner/repo/pull/42". GitHub.com only.'),
   expected_head_sha: z
     .string()
-    .regex(/^[0-9a-f]{7,40}$/)
+    .regex(/^[0-9a-f]{40}$/, "expected_head_sha must be the full 40-character sha from `git rev-parse HEAD`")
     .optional()
     .describe(
-      "The commit you expect at the PR head, e.g. the output of `git rev-parse HEAD` after your last push. When the PR head differs, the verdict is not_ready with reason stale_head.",
+      "The full 40-character sha you expect at the PR head: run `git rev-parse HEAD` after your push. If the PR head differs, the verdict is not_ready with stale_head.",
     ),
-  ...lintOptions,
 });
 
-export const lintInput = z.object({
-  pr: pr.optional().describe(`${pr.description} Give this or body.`),
-  body: z.string().optional().describe("A PR body to lint before publishing it. Give this or pr."),
-  ...lintOptions,
-});
-
-export const lintHit = z.object({
-  rule: z.enum(LINT_RULES),
-  line: z.number().describe("1-based line in the body."),
-  message: z.string(),
-  fix: z.string().describe("What to change to clear the hit."),
-});
-
-export const lintOutput = z.object({
-  target: z.string().describe('The PR URL, or "body" when a body was given.'),
-  clean: z.boolean().describe("True when there are no hits."),
-  hits: z.array(lintHit),
+const check = z.object({
+  name: z.string().describe("Check run or commit status name, as the repository named it."),
+  required: z.boolean().describe("Whether the repository requires it. A label only: it never changes the verdict."),
+  url: z.string().nullable().describe("Where to read its result."),
 });
 
 export const readinessOutput = z.object({
-  pr: z.string().describe("The PR URL."),
+  pr: z.string().describe("The canonical PR URL."),
   verdict: z
     .enum(["ready", "not_ready", "merged", "closed"])
-    .describe("ready only when reasons is empty. merged and closed PRs are reported, not judged."),
+    .describe("ready only when reasons is empty. not_ready means not verified ready; reasons say why."),
   head_sha: z.string().describe("The PR head commit this verdict is for."),
+  checked_at: z.string().describe("When GitHub was read (ISO 8601). An observation, not a lease."),
   reasons: z
     .array(
       z.object({
         code: z.enum(REASON_CODES),
-        detail: z.string(),
-        fix: z.string().describe("The next action that clears this reason."),
+        owner: z
+          .enum(["author", "reviewer", "wait", "unknown"])
+          .describe("Whose move it is: a hand-off hint, not permission to act and not a claim about other reasons."),
+        detail: z.string().describe("What was observed: counts and categories."),
+        fix: z.string().describe("The next step. Inspection first; never a write command."),
       }),
     )
-    .describe("Everything blocking a ready verdict. Empty when ready, merged or closed."),
+    .describe("Every reason the PR is not verified ready. Empty when ready, merged or closed."),
   facts: z.object({
     state: z.enum(["OPEN", "CLOSED", "MERGED"]),
     draft: z.boolean(),
+    base: z.string().describe("The base branch."),
+    merge_state: z
+      .string()
+      .describe("GitHub's mergeStateStatus: CLEAN, BLOCKED, BEHIND, DIRTY, UNSTABLE, HAS_HOOKS or UNKNOWN."),
     mergeable: z.enum(["MERGEABLE", "CONFLICTING", "UNKNOWN"]),
-    review_decision: z
-      .enum(["APPROVED", "CHANGES_REQUESTED", "REVIEW_REQUIRED"])
-      .nullable()
-      .describe("Reported, not judged: the author cannot clear it alone."),
+    in_merge_queue: z.boolean(),
+    review_decision: z.enum(["APPROVED", "CHANGES_REQUESTED", "REVIEW_REQUIRED"]).nullable(),
+    requested_reviewers: z.array(z.string()).describe("Users and teams (org/team) asked to review."),
     checks: z.object({
-      total: z.number(),
-      by_conclusion: z.record(z.string(), z.number()).describe('Check count per conclusion, e.g. {"SUCCESS": 4}.'),
-      failing: z.array(z.string()).describe("Names of failed, cancelled or timed-out checks."),
-      pending: z.array(z.string()).describe("Names of checks not finished yet."),
+      rollup: z
+        .enum(["SUCCESS", "FAILURE", "ERROR", "PENDING", "EXPECTED"])
+        .nullable()
+        .describe("GitHub's combined state over every check on the head; null when none has reported."),
+      total: z.number().describe("Checks on the head commit."),
+      listed: z.number().describe("Checks read by name (at most 100)."),
+      details_complete: z.boolean().describe("False when failing and pending below are a sample of the first 100."),
+      by_state: z.record(z.string(), z.number()).describe('Complete count per state, e.g. {"SUCCESS": 18}.'),
+      failing: z.array(check),
+      pending: z.array(check),
     }),
-    unsigned_commits: z.number().describe("Commits without a verified signature."),
-    requested_reviewers: z.array(z.string()).describe("Users and teams (org/team) still asked to review."),
-    lint_hits: z.array(lintHit),
   }),
 });
 
-export type LintRule = (typeof LINT_RULES)[number];
-export type LintHit = z.infer<typeof lintHit>;
-export type ReasonCode = (typeof REASON_CODES)[number];
 export type Readiness = z.infer<typeof readinessOutput>;
+export type Reason = Readiness["reasons"][number];

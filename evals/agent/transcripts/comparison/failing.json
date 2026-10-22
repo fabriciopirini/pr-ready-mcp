@@ -1,0 +1,464 @@
+{
+  "task": {
+    "name": "failing",
+    "pr": "modelcontextprotocol/typescript-sdk#3064",
+    "ask": "Is modelcontextprotocol/typescript-sdk#3064 ready to merge?"
+  },
+  "order": ["gh", "tool"],
+  "before": {
+    "observed_at": "2026-10-22T15:37:57.802Z",
+    "head_sha": "b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72",
+    "verdict": "not_ready",
+    "reasons": ["checks_failing/author", "review_required/reviewer"],
+    "facts": {
+      "state": "OPEN",
+      "draft": false,
+      "merge_state": "BLOCKED",
+      "mergeable": "MERGEABLE",
+      "review_decision": "REVIEW_REQUIRED",
+      "in_merge_queue": false,
+      "rollup": "FAILURE"
+    },
+    "by_state": {
+      "FAILURE": 1,
+      "SUCCESS": 13
+    }
+  },
+  "after": {
+    "observed_at": "2026-10-22T15:38:26.601Z",
+    "head_sha": "b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72",
+    "verdict": "not_ready",
+    "reasons": ["checks_failing/author", "review_required/reviewer"],
+    "facts": {
+      "state": "OPEN",
+      "draft": false,
+      "merge_state": "BLOCKED",
+      "mergeable": "MERGEABLE",
+      "review_decision": "REVIEW_REQUIRED",
+      "in_merge_queue": false,
+      "rollup": "FAILURE"
+    },
+    "by_state": {
+      "FAILURE": 1,
+      "SUCCESS": 13
+    }
+  },
+  "runs": [
+    {
+      "arm": "gh",
+      "prompt": "Is modelcontextprotocol/typescript-sdk#3064 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse only these read-only commands: `gh pr view <pr> --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup` and `gh pr checks <pr>`.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+      "started_at": "2026-10-22T15:37:57.803Z",
+      "finished_at": "2026-10-22T15:38:13.431Z",
+      "model": "claude-sonnet-5-5",
+      "final": "No, PR #3064 isn't ready to merge. Two things block it:\n\n- **Merge state:** GitHub reports it as BLOCKED, not CLEAN.\n- **Failing check:** `test (20)`, the Node 20 test job, failed on the head commit. The other 13 checks passed: build, the Node 22 and 24 tests, the e2e jobs, the conformance tests, the bun and deno runtime tests, the examples and the publish checks.\n- **Review:** The review decision is REVIEW_REQUIRED, so it still needs an approving review.\n\nThe PR is open and not a draft, and GitHub says it has no merge conflicts. The head commit is `b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72`. I can't confirm that's the commit you expect, and the read-only commands I was limited to don't show whether it's in a merge queue.\n\nThe author should look at the `test (20)` failure and fix it or rerun it if it was a flake. The PR also needs a reviewer's approval.\n\nCLAIM: not ready\nNEXT: author",
+      "num_turns": 3,
+      "duration_ms": 11071,
+      "cost_usd": 0.030535800000000002,
+      "claude_code_version": "2.1.308",
+      "tools": ["Bash"],
+      "events": [
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXQBv87pdHjezrpwPPP",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_01QkHyc8C4T3SGFdUapo4KTS",
+                "name": "Bash",
+                "input": {
+                  "command": "gh pr view 3064 -R modelcontextprotocol/typescript-sdk --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2766,
+              "cache_read_input_tokens": 2136,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2766
+              },
+              "output_tokens": 16,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "62ffbc31-510e-40f0-90af-11670f332c30",
+          "uuid": "9b65683c-6d04-4776-bae5-47394d3b3cc0",
+          "timestamp": "2026-10-22T15:38:04.666Z",
+          "request_id": "req_011CgHXQBZHwD9zsprBhKWHk",
+          "wire_tool_inputs": {
+            "toolu_01QkHyc8C4T3SGFdUapo4KTS": {
+              "command": "gh pr view 3064 -R modelcontextprotocol/typescript-sdk --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup"
+            }
+          }
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXQBv87pdHjezrpwPPP",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_01HVATEppTZbmTcSzcXFTiZa",
+                "name": "Bash",
+                "input": {
+                  "command": "gh pr checks 3064 -R modelcontextprotocol/typescript-sdk"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2766,
+              "cache_read_input_tokens": 2136,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2766
+              },
+              "output_tokens": 16,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "62ffbc31-510e-40f0-90af-11670f332c30",
+          "uuid": "b638f0e9-58e3-4409-bfb0-655d992658cf",
+          "timestamp": "2026-10-22T15:38:04.696Z",
+          "request_id": "req_011CgHXQBZHwD9zsprBhKWHk",
+          "wire_tool_inputs": {
+            "toolu_01HVATEppTZbmTcSzcXFTiZa": {
+              "command": "gh pr checks 3064 -R modelcontextprotocol/typescript-sdk"
+            }
+          }
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "tool_use_id": "toolu_01QkHyc8C4T3SGFdUapo4KTS",
+                "type": "tool_result",
+                "content": "{\"headRefOid\":\"b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72\",\"isDraft\":false,\"mergeStateStatus\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"reviewDecision\":\"REVIEW_REQUIRED\",\"state\":\"OPEN\",\"statusCheckRollup\":[{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:24:50Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317222\",\"name\":\"build\",\"startedAt\":\"2026-10-22T04:22:13Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:37Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637316989\",\"name\":\"client-conformance\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Conformance Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:25:49Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987777/job/119637318008\",\"name\":\"examples (build + e2e)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Examples\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:15Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987776/job/119637317672\",\"name\":\"pkg-publish\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Publish Any Commit\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:29Z\",\"conclusion\":\"FAILURE\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181\",\"name\":\"test (20)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:16Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637317310\",\"name\":\"server-conformance\",\"startedAt\":\"2026-10-22T04:22:13Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Conformance Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:24Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317223\",\"name\":\"test (22)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:24Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317152\",\"name\":\"test (24)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317221\",\"name\":\"test-e2e (20)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:23Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317334\",\"name\":\"test-e2e (22)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:22Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317227\",\"name\":\"test-e2e (24)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:02Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317238\",\"name\":\"test-runtimes (bun, 1.x)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:22:49Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317056\",\"name\":\"test-runtimes (deno, v2.x)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:10Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://pkg.pr.new\",\"name\":\"Continuous Releases\",\"startedAt\":\"2026-10-22T04:23:10Z\",\"status\":\"COMPLETED\",\"workflowName\":\"\"}]}",
+                "is_error": false
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "62ffbc31-510e-40f0-90af-11670f332c30",
+          "uuid": "55014ce3-94a1-4d38-ab7a-72821cdad003",
+          "timestamp": "2026-10-22T15:38:06.488Z",
+          "tool_use_result": {
+            "stdout": "{\"headRefOid\":\"b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72\",\"isDraft\":false,\"mergeStateStatus\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"reviewDecision\":\"REVIEW_REQUIRED\",\"state\":\"OPEN\",\"statusCheckRollup\":[{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:24:50Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317222\",\"name\":\"build\",\"startedAt\":\"2026-10-22T04:22:13Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:37Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637316989\",\"name\":\"client-conformance\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Conformance Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:25:49Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987777/job/119637318008\",\"name\":\"examples (build + e2e)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Examples\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:15Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987776/job/119637317672\",\"name\":\"pkg-publish\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Publish Any Commit\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:29Z\",\"conclusion\":\"FAILURE\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181\",\"name\":\"test (20)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:16Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637317310\",\"name\":\"server-conformance\",\"startedAt\":\"2026-10-22T04:22:13Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Conformance Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:24Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317223\",\"name\":\"test (22)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:24Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317152\",\"name\":\"test (24)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317221\",\"name\":\"test-e2e (20)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:23Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317334\",\"name\":\"test-e2e (22)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:22Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317227\",\"name\":\"test-e2e (24)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:02Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317238\",\"name\":\"test-runtimes (bun, 1.x)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:22:49Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317056\",\"name\":\"test-runtimes (deno, v2.x)\",\"startedAt\":\"2026-10-22T04:22:14Z\",\"status\":\"COMPLETED\",\"workflowName\":\".github/workflows/main.yml\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T04:23:10Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://pkg.pr.new\",\"name\":\"Continuous Releases\",\"startedAt\":\"2026-10-22T04:23:10Z\",\"status\":\"COMPLETED\",\"workflowName\":\"\"}]}",
+            "stderr": "",
+            "interrupted": false,
+            "isImage": false,
+            "noOutputExpected": false
+          },
+          "tool_result_meta": [
+            {
+              "id": "toolu_01QkHyc8C4T3SGFdUapo4KTS",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "subcommandResults"
+              }
+            }
+          ]
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "content": "Exit code 1\ntest (20)\tfail\t1m15s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181\t\nContinuous Releases\tpass\t0\thttps://pkg.pr.new\t\nbuild\tpass\t2m37s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317222\t\nclient-conformance\tpass\t1m23s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637316989\t\nexamples (build + e2e)\tpass\t3m35s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987777/job/119637318008\t\npkg-publish\tpass\t1m1s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987776/job/119637317672\t\nserver-conformance\tpass\t1m3s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637317310\t\ntest (22)\tpass\t1m10s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317223\t\ntest (24)\tpass\t1m10s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317152\t\ntest-e2e (20)\tpass\t1m14s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317221\t\ntest-e2e (22)\tpass\t1m9s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317334\t\ntest-e2e (24)\tpass\t1m8s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317227\t\ntest-runtimes (bun, 1.x)\tpass\t48s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317238\t\ntest-runtimes (deno, v2.x)\tpass\t35s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317056",
+                "is_error": true,
+                "tool_use_id": "toolu_01HVATEppTZbmTcSzcXFTiZa"
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "62ffbc31-510e-40f0-90af-11670f332c30",
+          "uuid": "69b8abcf-65e2-4a92-ad16-94c76b76a32f",
+          "timestamp": "2026-10-22T15:38:07.675Z",
+          "tool_use_result": "Error: Exit code 1\ntest (20)\tfail\t1m15s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181\t\nContinuous Releases\tpass\t0\thttps://pkg.pr.new\t\nbuild\tpass\t2m37s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317222\t\nclient-conformance\tpass\t1m23s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637316989\t\nexamples (build + e2e)\tpass\t3m35s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987777/job/119637318008\t\npkg-publish\tpass\t1m1s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987776/job/119637317672\t\nserver-conformance\tpass\t1m3s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987630/job/119637317310\t\ntest (22)\tpass\t1m10s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317223\t\ntest (24)\tpass\t1m10s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317152\t\ntest-e2e (20)\tpass\t1m14s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317221\t\ntest-e2e (22)\tpass\t1m9s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317334\t\ntest-e2e (24)\tpass\t1m8s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317227\t\ntest-runtimes (bun, 1.x)\tpass\t48s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317238\t\ntest-runtimes (deno, v2.x)\tpass\t35s\thttps://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317056",
+          "tool_result_meta": [
+            {
+              "id": "toolu_01HVATEppTZbmTcSzcXFTiZa",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "subcommandResults"
+              }
+            }
+          ]
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXQbGoYqCMcZXSxcC15",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "No, PR #3064 isn't ready to merge. Two things block it:\n\n- **Merge state:** GitHub reports it as BLOCKED, not CLEAN.\n- **Failing check:** `test (20)`, the Node 20 test job, failed on the head commit. The other 13 checks passed: build, the Node 22 and 24 tests, the e2e jobs, the conformance tests, the bun and deno runtime tests, the examples and the publish checks.\n- **Review:** The review decision is REVIEW_REQUIRED, so it still needs an approving review.\n\nThe PR is open and not a draft, and GitHub says it has no merge conflicts. The head commit is `b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72`. I can't confirm that's the commit you expect, and the read-only commands I was limited to don't show whether it's in a merge queue.\n\nThe author should look at the `test (20)` failure and fix it or rerun it if it was a flake. The PR also needs a reviewer's approval.\n\nCLAIM: not ready\nNEXT: author"
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 3325,
+              "cache_read_input_tokens": 4902,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 3325
+              },
+              "output_tokens": 356,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "62ffbc31-510e-40f0-90af-11670f332c30",
+          "uuid": "b864b7cb-3b3e-4a45-b3b5-162328c4f969",
+          "timestamp": "2026-10-22T15:38:13.189Z",
+          "request_id": "req_011CgHXQb1SLkn8y1eGKU6P4"
+        }
+      ]
+    },
+    {
+      "arm": "tool",
+      "prompt": "Is modelcontextprotocol/typescript-sdk#3064 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+      "started_at": "2026-10-22T15:38:13.431Z",
+      "finished_at": "2026-10-22T15:38:25.410Z",
+      "model": "claude-sonnet-5-5",
+      "final": "No, PR #3064 isn't ready to merge. I checked the head commit `b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72` at 2026-10-22 15:38 UTC. I didn't pass an expected head SHA, so I can't confirm that's the commit you expect.\n\n- **Checks:** 13 of 14 passed. The required check `test (20)` failed, so the check rollup is FAILURE. The [failing job](https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181) is worth reading before deciding whether the cause is the code or a flaky test.\n- **Review:** A review is required and hasn't been given, and no reviewers are currently requested.\n- **Merge state:** BLOCKED, even though there are no merge conflicts. The PR is open, not a draft, and not in a merge queue.\n\nThe author needs to fix or re-run the failing test. A reviewer also needs to approve.\n\nCLAIM: not ready\nNEXT: author",
+      "num_turns": 2,
+      "duration_ms": 8149,
+      "cost_usd": 0.017372699999999998,
+      "claude_code_version": "2.1.308",
+      "tools": ["mcp__pr-ready__pr_readiness"],
+      "events": [
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXRHKM2HNKY5Mjq3WK9",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_01EBRBecJMFinh9V6CDnrRWK",
+                "name": "mcp__pr-ready__pr_readiness",
+                "input": {
+                  "pr": "modelcontextprotocol/typescript-sdk#3064"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2489,
+              "cache_read_input_tokens": 1789,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2489
+              },
+              "output_tokens": 32,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "a49f7344-e230-4925-944c-3c2f583f2b98",
+          "uuid": "07ab8159-63e2-4800-9741-f36427018a49",
+          "timestamp": "2026-10-22T15:38:18.844Z",
+          "request_id": "req_011CgHXRGzVMdammyZ4LB1TE",
+          "wire_tool_inputs": {
+            "toolu_01EBRBecJMFinh9V6CDnrRWK": {
+              "pr": "modelcontextprotocol/typescript-sdk#3064"
+            }
+          },
+          "tool_use_meta": [
+            {
+              "id": "toolu_01EBRBecJMFinh9V6CDnrRWK",
+              "display_name": "Pr Readiness",
+              "server_display_name": "pr-ready-mcp",
+              "tool_name": "pr_readiness"
+            }
+          ]
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "tool_use_id": "toolu_01EBRBecJMFinh9V6CDnrRWK",
+                "type": "tool_result",
+                "content": "{\"pr\":\"https://github.com/modelcontextprotocol/typescript-sdk/pull/3064\",\"verdict\":\"not_ready\",\"head_sha\":\"b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72\",\"checked_at\":\"2026-10-22T15:38:21.386Z\",\"reasons\":[{\"code\":\"checks_failing\",\"owner\":\"author\",\"detail\":\"1 of 14 checks failed on the head commit; 14 of 14 listed by name.\",\"fix\":\"Open the URLs in facts.checks.failing and read the logs before assuming the code or the author caused it. A check marked required: false is not required by the repository; this tool still waits for it to pass or be re-run.\"},{\"code\":\"review_required\",\"owner\":\"reviewer\",\"detail\":\"The review requirement is not satisfied.\",\"fix\":\"Ask the appropriate reviewer; inspect the other reasons for work that is still yours.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"main\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"REVIEW_REQUIRED\",\"requested_reviewers\":[],\"checks\":{\"rollup\":\"FAILURE\",\"total\":14,\"listed\":14,\"details_complete\":true,\"by_state\":{\"FAILURE\":1,\"SUCCESS\":13},\"failing\":[{\"name\":\"test (20)\",\"required\":true,\"url\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181\"}],\"pending\":[]}}}"
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "a49f7344-e230-4925-944c-3c2f583f2b98",
+          "uuid": "faffc5b7-a331-4169-9179-9bf1a738347f",
+          "timestamp": "2026-10-22T15:38:21.390Z",
+          "tool_use_result": {
+            "content": "{\"pr\":\"https://github.com/modelcontextprotocol/typescript-sdk/pull/3064\",\"verdict\":\"not_ready\",\"head_sha\":\"b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72\",\"checked_at\":\"2026-10-22T15:38:21.386Z\",\"reasons\":[{\"code\":\"checks_failing\",\"owner\":\"author\",\"detail\":\"1 of 14 checks failed on the head commit; 14 of 14 listed by name.\",\"fix\":\"Open the URLs in facts.checks.failing and read the logs before assuming the code or the author caused it. A check marked required: false is not required by the repository; this tool still waits for it to pass or be re-run.\"},{\"code\":\"review_required\",\"owner\":\"reviewer\",\"detail\":\"The review requirement is not satisfied.\",\"fix\":\"Ask the appropriate reviewer; inspect the other reasons for work that is still yours.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"main\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"REVIEW_REQUIRED\",\"requested_reviewers\":[],\"checks\":{\"rollup\":\"FAILURE\",\"total\":14,\"listed\":14,\"details_complete\":true,\"by_state\":{\"FAILURE\":1,\"SUCCESS\":13},\"failing\":[{\"name\":\"test (20)\",\"required\":true,\"url\":\"https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181\"}],\"pending\":[]}}}",
+            "structuredContent": {
+              "pr": "https://github.com/modelcontextprotocol/typescript-sdk/pull/3064",
+              "verdict": "not_ready",
+              "head_sha": "b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72",
+              "checked_at": "2026-10-22T15:38:21.386Z",
+              "reasons": [
+                {
+                  "code": "checks_failing",
+                  "owner": "author",
+                  "detail": "1 of 14 checks failed on the head commit; 14 of 14 listed by name.",
+                  "fix": "Open the URLs in facts.checks.failing and read the logs before assuming the code or the author caused it. A check marked required: false is not required by the repository; this tool still waits for it to pass or be re-run."
+                },
+                {
+                  "code": "review_required",
+                  "owner": "reviewer",
+                  "detail": "The review requirement is not satisfied.",
+                  "fix": "Ask the appropriate reviewer; inspect the other reasons for work that is still yours."
+                }
+              ],
+              "facts": {
+                "state": "OPEN",
+                "draft": false,
+                "base": "main",
+                "merge_state": "BLOCKED",
+                "mergeable": "MERGEABLE",
+                "in_merge_queue": false,
+                "review_decision": "REVIEW_REQUIRED",
+                "requested_reviewers": [],
+                "checks": {
+                  "rollup": "FAILURE",
+                  "total": 14,
+                  "listed": 14,
+                  "details_complete": true,
+                  "by_state": {
+                    "FAILURE": 1,
+                    "SUCCESS": 13
+                  },
+                  "failing": [
+                    {
+                      "name": "test (20)",
+                      "required": true,
+                      "url": "https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181"
+                    }
+                  ],
+                  "pending": []
+                }
+              }
+            }
+          },
+          "tool_result_meta": [
+            {
+              "id": "toolu_01EBRBecJMFinh9V6CDnrRWK",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "rule"
+              }
+            }
+          ]
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXRcZUf45nWDwXpCefu",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "No, PR #3064 isn't ready to merge. I checked the head commit `b7dea7f46eb2d9786afe5cc2b46f73a5270c5e72` at 2026-10-22 15:38 UTC. I didn't pass an expected head SHA, so I can't confirm that's the commit you expect.\n\n- **Checks:** 13 of 14 passed. The required check `test (20)` failed, so the check rollup is FAILURE. The [failing job](https://github.com/modelcontextprotocol/typescript-sdk/actions/runs/39721987595/job/119637317181) is worth reading before deciding whether the cause is the code or a flaky test.\n- **Review:** A review is required and hasn't been given, and no reviewers are currently requested.\n- **Merge state:** BLOCKED, even though there are no merge conflicts. The PR is open, not a draft, and not in a merge queue.\n\nThe author needs to fix or re-run the failing test. A reviewer also needs to approve.\n\nCLAIM: not ready\nNEXT: author"
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 638,
+              "cache_read_input_tokens": 4278,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 638
+              },
+              "output_tokens": 345,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "a49f7344-e230-4925-944c-3c2f583f2b98",
+          "uuid": "e870fa5c-c730-4c03-be9a-5d120321f07c",
+          "timestamp": "2026-10-22T15:38:25.089Z",
+          "request_id": "req_011CgHXRbhdkyYhyN4TEq2xE"
+        }
+      ]
+    }
+  ]
+}

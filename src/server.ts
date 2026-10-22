@@ -1,23 +1,34 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { type GitHub, type PrRef, parsePrRef } from "./github.ts";
-import { lintBody } from "./lint.ts";
+import { type GitHub, parsePrRef, ToolError } from "./github.ts";
 import { judge } from "./readiness.ts";
-import { lintInput, lintOutput, readinessInput, readinessOutput } from "./schema.ts";
+import { readinessInput, readinessOutput } from "./schema.ts";
 
-const annotations = { readOnlyHint: true, idempotentHint: true, openWorldHint: true };
+const DESCRIPTION = `Check whether a GitHub pull request is verified ready to merge, from live GitHub data.
 
-function ref(pr: string): PrRef {
-  const r = parsePrRef(pr);
-  if (!r)
-    throw new Error(`Not a pull request: "${pr}". Use "https://github.com/owner/repo/pull/123" or "owner/repo#123".`);
-  return r;
+Call it before you say a PR is ready, green, mergeable or done; after every push; and again immediately before any final claim. Pass expected_head_sha = the full sha from \`git rev-parse HEAD\` after your push.
+
+verdict: ready | not_ready | merged | closed. ready means GitHub's merge state is CLEAN, every check on the head passed, no review decision blocks, the PR is not queued, and the head is the one you expected. Stricter than the merge button: an optional failing or running check also blocks. not_ready means not verified ready; reasons say why.
+
+Each reason has a code, an owner, a detail and a fix. The codes mergeable_unknown, checks_missing, stale_head and unsupported_merge_state mean "cannot verify yet": report them as that, not as a defect. Every other code is a known obstacle, checks_pending and blocked_by_branch_rule included. owner (author | reviewer | wait | unknown) says whose move it is; it is not permission to act and not a claim that anything else is clear.
+
+This tool reads; it never merges, publishes a draft, pushes or rewrites history, and its verdict does not authorise you to. Ready, green, merged and done are different words: use the one the verdict supports, with head_sha and checked_at.
+
+Errors come back as isError with JSON text {code, message, retryable, retry_after_seconds?}.
+
+Example: {"pr": "octo-org/widgets#42", "expected_head_sha": "4f1c2e7a9b0d3c6e8f1a2b4c5d6e7f8091a2b3c4"}`;
+
+function errorResult(e: unknown) {
+  const err = e instanceof ToolError ? e : new ToolError("upstream_error", "Unexpected failure while reading GitHub.");
+  const body = {
+    code: err.code,
+    message: err.message,
+    retryable: err.retryable,
+    ...(err.retryAfterSeconds === undefined ? {} : { retry_after_seconds: err.retryAfterSeconds }),
+  };
+  return { isError: true, content: [{ type: "text" as const, text: JSON.stringify(body) }] };
 }
 
-function result<T extends object>(value: T) {
-  return { content: [{ type: "text" as const, text: JSON.stringify(value, null, 2) }], structuredContent: value };
-}
-
-/** Builds the MCP server. Thrown errors reach the client as tool results with isError set. */
+/** Builds the MCP server with its one tool. */
 export function createServer(github: GitHub): McpServer {
   const server = new McpServer({ name: "pr-ready-mcp", version: "0.1.0" });
 
@@ -25,46 +36,24 @@ export function createServer(github: GitHub): McpServer {
     "pr_readiness",
     {
       title: "PR readiness",
-      description: `Decide whether a GitHub pull request is ready to merge, from live GitHub data. Call it before telling anyone a PR is ready, green or done.
-
-Returns a verdict (ready / not_ready / merged / closed), the head sha the verdict is for, every blocking reason with a machine code and a fix, and the raw facts (draft, mergeable, review decision, checks by conclusion with failing and pending names, unsigned commits, requested reviewers, PR body lint hits).
-
-A PR is not_ready when it is a draft, conflicts with its base, has failing or still-running checks, has commits without a verified signature, has body lint hits, or its checks are not for the current head. Review approval is reported in facts but does not block.
-
-Pass expected_head_sha after a push so the verdict cannot describe an older commit.
-
-Example: {"pr": "octo-org/widgets#42", "expected_head_sha": "4f1c2e7"}`,
+      description: DESCRIPTION,
       inputSchema: readinessInput,
       outputSchema: readinessOutput,
-      annotations,
+      annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true },
     },
-    async ({ pr, expected_head_sha, ...lint }) =>
-      result(judge(await github.pullRequest(ref(pr)), lint, expected_head_sha)),
-  );
-
-  server.registerTool(
-    "pr_body_lint",
-    {
-      title: "PR body lint",
-      description: `Check a pull request description for problems a reviewer would bounce: empty body, unchecked task boxes ("- [ ]"), TODO/FIXME/TBD/XXX markers, and (with require_linked_issue) no linked issue. Text in HTML comments and code is ignored.
-
-Lint a published PR with pr, or a draft body before publishing with body. Each hit has a rule, a line number and a fix.
-
-Examples: {"pr": "https://github.com/octo-org/widgets/pull/42"} or {"body": "Adds retries.\\n\\n- [ ] update docs", "require_linked_issue": true}`,
-      inputSchema: lintInput,
-      outputSchema: lintOutput,
-      annotations,
-    },
-    async ({ pr, body, ...opts }) => {
-      if ((pr === undefined) === (body === undefined)) throw new Error("Give exactly one of pr or body.");
-      let target = "body";
-      let hasLinkedIssue = false;
-      if (pr !== undefined) {
-        const p = await github.pullRequest(ref(pr));
-        [target, body, hasLinkedIssue] = [p.url, p.body, p.closingIssuesReferences.totalCount > 0];
+    async ({ pr, expected_head_sha }) => {
+      try {
+        const ref = parsePrRef(pr);
+        if (!ref)
+          throw new ToolError(
+            "invalid_input",
+            'pr must be "owner/repo#123" or "https://github.com/owner/repo/pull/123".',
+          );
+        const result = judge(await github.pullRequest(ref), expected_head_sha);
+        return { content: [{ type: "text", text: JSON.stringify(result, null, 2) }], structuredContent: result };
+      } catch (e) {
+        return errorResult(e);
       }
-      const hits = lintBody(body ?? "", { ...opts, has_linked_issue: hasLinkedIssue });
-      return result({ target, clean: hits.length === 0, hits });
     },
   );
 

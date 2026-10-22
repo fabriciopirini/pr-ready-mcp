@@ -1,0 +1,469 @@
+{
+  "task": {
+    "name": "pending",
+    "pr": "grafana/grafana#135725",
+    "ask": "Is grafana/grafana#135725 ready to merge?"
+  },
+  "order": ["tool", "gh"],
+  "before": {
+    "observed_at": "2026-10-22T15:38:25.235Z",
+    "head_sha": "6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf",
+    "verdict": "not_ready",
+    "reasons": ["checks_pending/wait"],
+    "facts": {
+      "state": "OPEN",
+      "draft": false,
+      "merge_state": "BLOCKED",
+      "mergeable": "MERGEABLE",
+      "review_decision": "APPROVED",
+      "in_merge_queue": false,
+      "rollup": "PENDING"
+    },
+    "by_state": {
+      "IN_PROGRESS": 1,
+      "NEUTRAL": 1,
+      "SKIPPED": 19,
+      "SUCCESS": 112,
+      "PENDING": 2
+    }
+  },
+  "after": {
+    "observed_at": "2026-10-22T15:38:54.661Z",
+    "head_sha": "6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf",
+    "verdict": "not_ready",
+    "reasons": ["checks_pending/wait"],
+    "facts": {
+      "state": "OPEN",
+      "draft": false,
+      "merge_state": "BLOCKED",
+      "mergeable": "MERGEABLE",
+      "review_decision": "APPROVED",
+      "in_merge_queue": false,
+      "rollup": "PENDING"
+    },
+    "by_state": {
+      "IN_PROGRESS": 1,
+      "NEUTRAL": 1,
+      "SKIPPED": 19,
+      "SUCCESS": 112,
+      "PENDING": 2
+    }
+  },
+  "runs": [
+    {
+      "arm": "tool",
+      "prompt": "Is grafana/grafana#135725 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+      "started_at": "2026-10-22T15:38:25.236Z",
+      "finished_at": "2026-10-22T15:38:37.209Z",
+      "model": "claude-sonnet-5-5",
+      "final": "No, grafana/grafana#135725 isn't ready to merge yet.\n\n- **Checks:** 3 of the 135 checks on the head commit haven't finished. One is in progress and two are pending. The overall rollup is PENDING. The only one the tool named is \"Detect changed files\", which isn't a required check. The other two weren't listed. No check has failed.\n- **Merge state:** GitHub reports BLOCKED, not CLEAN. This is probably because of the unfinished checks, but I can't confirm that.\n- **Review:** The PR is approved, and no reviewers are still requested.\n- **Other status:** The PR is open, not a draft, and has no merge conflicts. It isn't in a merge queue.\n- **Head commit:** 6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf, checked at 2026-10-22 15:38 UTC. You didn't give me an expected head, so I couldn't confirm it's the commit you expect.\n\nTo proceed, wait for the remaining checks to finish and then re-run the check. If the merge state still isn't CLEAN after that, something else is blocking it.\n\nCLAIM: not ready\nNEXT: wait",
+      "num_turns": 2,
+      "duration_ms": 8182,
+      "cost_usd": 0.0172557,
+      "claude_code_version": "2.1.308",
+      "tools": ["mcp__pr-ready__pr_readiness"],
+      "events": [
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXSAkyXoTFUcbkLT7wW",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_01Tn71MeAGXnXAB8EtYZH4jg",
+                "name": "mcp__pr-ready__pr_readiness",
+                "input": {
+                  "pr": "grafana/grafana#135725"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2479,
+              "cache_read_input_tokens": 1789,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2479
+              },
+              "output_tokens": 32,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "1569f35f-04aa-4601-8443-b2b7f7e536f3",
+          "uuid": "a453dd6e-613d-4811-88ea-63cea540f2e7",
+          "timestamp": "2026-10-22T15:38:31.178Z",
+          "request_id": "req_011CgHXSAQPQTFZM45Lr2xno",
+          "wire_tool_inputs": {
+            "toolu_01Tn71MeAGXnXAB8EtYZH4jg": {
+              "pr": "grafana/grafana#135725"
+            }
+          },
+          "tool_use_meta": [
+            {
+              "id": "toolu_01Tn71MeAGXnXAB8EtYZH4jg",
+              "display_name": "Pr Readiness",
+              "server_display_name": "pr-ready-mcp",
+              "tool_name": "pr_readiness"
+            }
+          ]
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "tool_use_id": "toolu_01Tn71MeAGXnXAB8EtYZH4jg",
+                "type": "tool_result",
+                "content": "{\"pr\":\"https://github.com/grafana/grafana/pull/135725\",\"verdict\":\"not_ready\",\"head_sha\":\"6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf\",\"checked_at\":\"2026-10-22T15:38:32.903Z\",\"reasons\":[{\"code\":\"checks_pending\",\"owner\":\"wait\",\"detail\":\"3 of 135 checks have not finished on the head commit; 100 of 135 listed by name.\",\"fix\":\"Wait for them to finish, then call pr_readiness again.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"main\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[],\"checks\":{\"rollup\":\"PENDING\",\"total\":135,\"listed\":100,\"details_complete\":false,\"by_state\":{\"IN_PROGRESS\":1,\"NEUTRAL\":1,\"SKIPPED\":19,\"SUCCESS\":112,\"PENDING\":2},\"failing\":[],\"pending\":[{\"name\":\"Detect changed files\",\"required\":false,\"url\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119905761541\"}]}}}"
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "1569f35f-04aa-4601-8443-b2b7f7e536f3",
+          "uuid": "b876d079-0ea1-4cb5-9c46-452447f8e852",
+          "timestamp": "2026-10-22T15:38:32.909Z",
+          "tool_use_result": {
+            "content": "{\"pr\":\"https://github.com/grafana/grafana/pull/135725\",\"verdict\":\"not_ready\",\"head_sha\":\"6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf\",\"checked_at\":\"2026-10-22T15:38:32.903Z\",\"reasons\":[{\"code\":\"checks_pending\",\"owner\":\"wait\",\"detail\":\"3 of 135 checks have not finished on the head commit; 100 of 135 listed by name.\",\"fix\":\"Wait for them to finish, then call pr_readiness again.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"main\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[],\"checks\":{\"rollup\":\"PENDING\",\"total\":135,\"listed\":100,\"details_complete\":false,\"by_state\":{\"IN_PROGRESS\":1,\"NEUTRAL\":1,\"SKIPPED\":19,\"SUCCESS\":112,\"PENDING\":2},\"failing\":[],\"pending\":[{\"name\":\"Detect changed files\",\"required\":false,\"url\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119905761541\"}]}}}",
+            "structuredContent": {
+              "pr": "https://github.com/grafana/grafana/pull/135725",
+              "verdict": "not_ready",
+              "head_sha": "6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf",
+              "checked_at": "2026-10-22T15:38:32.903Z",
+              "reasons": [
+                {
+                  "code": "checks_pending",
+                  "owner": "wait",
+                  "detail": "3 of 135 checks have not finished on the head commit; 100 of 135 listed by name.",
+                  "fix": "Wait for them to finish, then call pr_readiness again."
+                }
+              ],
+              "facts": {
+                "state": "OPEN",
+                "draft": false,
+                "base": "main",
+                "merge_state": "BLOCKED",
+                "mergeable": "MERGEABLE",
+                "in_merge_queue": false,
+                "review_decision": "APPROVED",
+                "requested_reviewers": [],
+                "checks": {
+                  "rollup": "PENDING",
+                  "total": 135,
+                  "listed": 100,
+                  "details_complete": false,
+                  "by_state": {
+                    "IN_PROGRESS": 1,
+                    "NEUTRAL": 1,
+                    "SKIPPED": 19,
+                    "SUCCESS": 112,
+                    "PENDING": 2
+                  },
+                  "failing": [],
+                  "pending": [
+                    {
+                      "name": "Detect changed files",
+                      "required": false,
+                      "url": "https://github.com/grafana/grafana/actions/runs/39802226351/job/119905761541"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "tool_result_meta": [
+            {
+              "id": "toolu_01Tn71MeAGXnXAB8EtYZH4jg",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "rule"
+              }
+            }
+          ]
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXSTDBqcfjPKBoC8QLi",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "No, grafana/grafana#135725 isn't ready to merge yet.\n\n- **Checks:** 3 of the 135 checks on the head commit haven't finished. One is in progress and two are pending. The overall rollup is PENDING. The only one the tool named is \"Detect changed files\", which isn't a required check. The other two weren't listed. No check has failed.\n- **Merge state:** GitHub reports BLOCKED, not CLEAN. This is probably because of the unfinished checks, but I can't confirm that.\n- **Review:** The PR is approved, and no reviewers are still requested.\n- **Other status:** The PR is open, not a draft, and has no merge conflicts. It isn't in a merge queue.\n- **Head commit:** 6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf, checked at 2026-10-22 15:38 UTC. You didn't give me an expected head, so I couldn't confirm it's the commit you expect.\n\nTo proceed, wait for the remaining checks to finish and then re-run the check. If the merge state still isn't CLEAN after that, something else is blocking it.\n\nCLAIM: not ready\nNEXT: wait"
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 524,
+              "cache_read_input_tokens": 4268,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 524
+              },
+              "output_tokens": 393,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "1569f35f-04aa-4601-8443-b2b7f7e536f3",
+          "uuid": "b0e5ea34-9414-4b84-b17a-975b7a303b31",
+          "timestamp": "2026-10-22T15:38:36.901Z",
+          "request_id": "req_011CgHXSSw4aPsUDHzniDxQ4"
+        }
+      ]
+    },
+    {
+      "arm": "gh",
+      "prompt": "Is grafana/grafana#135725 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse only these read-only commands: `gh pr view <pr> --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup` and `gh pr checks <pr>`.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+      "started_at": "2026-10-22T15:38:37.209Z",
+      "finished_at": "2026-10-22T15:38:53.066Z",
+      "model": "claude-sonnet-5-5",
+      "final": "Not ready to merge yet.\n\n- **Merge state:** GitHub reports it as BLOCKED, not CLEAN. The PR is open, not a draft, and has no merge conflicts.\n- **Review:** The review decision is APPROVED, so no review is blocking it.\n- **Checks:** The rollup isn't fully green. The `policy-bot` and `policy-bot: main` checks are pending with \"0/1 rules approved\". That is probably what's blocking the merge. A \"Detect changed files\" check is also still pending. The pass, skipped, and Playwright E2E results I saw were fine, but part of the `gh pr checks` output was truncated, so I didn't see every line.\n- **Head commit:** It's `6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf`. You didn't tell me which commit you expect, so I can't confirm it matches.\n- **Merge queue:** The commands I'm allowed to use don't show whether the PR is in a merge queue.\n\nThe policy-bot approval rule is unmet even though the review decision is APPROVED. It likely needs an approval from a specific owner or team, and the author or reviewers should check the policy-bot details link on the PR.\n\nCLAIM: not ready\nNEXT: reviewer",
+      "num_turns": 3,
+      "duration_ms": 12051,
+      "cost_usd": 0.041584800000000005,
+      "claude_code_version": "2.1.308",
+      "tools": ["Bash"],
+      "events": [
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXT38rrWwTis9o2HzGK",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_01Ne7QPQ4GP5LMe14QBTp8eM",
+                "name": "Bash",
+                "input": {
+                  "command": "gh pr view 135725 --repo grafana/grafana --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2756,
+              "cache_read_input_tokens": 2136,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2756
+              },
+              "output_tokens": 16,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "eaf0d395-2dd6-49f6-9bd9-cd294514982d",
+          "uuid": "92af6226-9599-4f45-8cd3-ab604c763c60",
+          "timestamp": "2026-10-22T15:38:42.911Z",
+          "request_id": "req_011CgHXT2jYisw7mgxxrJYiF",
+          "wire_tool_inputs": {
+            "toolu_01Ne7QPQ4GP5LMe14QBTp8eM": {
+              "command": "gh pr view 135725 --repo grafana/grafana --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup"
+            }
+          }
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXT38rrWwTis9o2HzGK",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_0157gaSEvUrMXs9Yhh1yxFic",
+                "name": "Bash",
+                "input": {
+                  "command": "gh pr checks 135725 --repo grafana/grafana"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2756,
+              "cache_read_input_tokens": 2136,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2756
+              },
+              "output_tokens": 16,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "eaf0d395-2dd6-49f6-9bd9-cd294514982d",
+          "uuid": "f1e0b51d-dfee-4b5b-b89e-a6fe2c7131ca",
+          "timestamp": "2026-10-22T15:38:42.922Z",
+          "request_id": "req_011CgHXT2jYisw7mgxxrJYiF",
+          "wire_tool_inputs": {
+            "toolu_0157gaSEvUrMXs9Yhh1yxFic": {
+              "command": "gh pr checks 135725 --repo grafana/grafana"
+            }
+          }
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "tool_use_id": "toolu_01Ne7QPQ4GP5LMe14QBTp8eM",
+                "type": "tool_result",
+                "content": "<persisted-output>\nOutput too large (40.1KB). Full output saved to: ~/.claude/projects/-private-var-folders-qr-fn98whcd7xs3ltx5z7vcgvzw0000gn-T-pr-ready-eval-MMJn3N/eaf0d395-2dd6-49f6-9bd9-cd294514982d/tool-results/bqfrxgs5h.txt\n\nPreview (first 2KB):\n{\"headRefOid\":\"6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf\",\"isDraft\":false,\"mergeStateStatus\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"reviewDecision\":\"APPROVED\",\"state\":\"OPEN\",\"statusCheckRollup\":[{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:09:57Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802221357/job/119905798145\",\"name\":\"signed-commits\",\"startedAt\":\"2026-10-22T15:10:03Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Display info box when PR contains unsigned commits\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:07Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802221661/job/119905746063\",\"name\":\"main\",\"startedAt\":\"2026-10-22T15:09:59Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Auto-milestone\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226230/job/119905760593\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Backend Code Checks\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225663/job/119905758517\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Backend Unit Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226361/job/119905761975\",\"name\":\"Detect frontend changes\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Bundle size\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:06Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119905762017\",\"name\":\"Setup opted-in teams\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Check Frontend\n...\n</persisted-output>",
+                "is_error": false
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "eaf0d395-2dd6-49f6-9bd9-cd294514982d",
+          "uuid": "85e5cc50-ea1e-4514-a743-e151a8b329b3",
+          "timestamp": "2026-10-22T15:38:45.417Z",
+          "tool_use_result": {
+            "stdout": "{\"headRefOid\":\"6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf\",\"isDraft\":false,\"mergeStateStatus\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"reviewDecision\":\"APPROVED\",\"state\":\"OPEN\",\"statusCheckRollup\":[{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:09:57Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802221357/job/119905798145\",\"name\":\"signed-commits\",\"startedAt\":\"2026-10-22T15:10:03Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Display info box when PR contains unsigned commits\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:07Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802221661/job/119905746063\",\"name\":\"main\",\"startedAt\":\"2026-10-22T15:09:59Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Auto-milestone\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226230/job/119905760593\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Backend Code Checks\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225663/job/119905758517\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Backend Unit Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226361/job/119905761975\",\"name\":\"Detect frontend changes\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Bundle size\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:06Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119905762017\",\"name\":\"Setup opted-in teams\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Check Frontend Test Coverage\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:33Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225926/job/119905758243\",\"name\":\"codeowners-validator\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Codeowners Validator\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:04Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226160/job/119905759120\",\"name\":\"dispatch-job\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Dispatch check for patch conflicts\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:04Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802224928/job/119905754995\",\"name\":\"signed-commits\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Display info box when PR contains unsigned commits\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119905764302\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226342/job/119905761871\",\"name\":\"detect-changes\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Endpoint Migration Feature Toggle Check\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:10Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802221646/job/119905745690\",\"name\":\"Capture PR metadata for handler\",\"startedAt\":\"2026-10-22T15:09:59Z\",\"status\":\"COMPLETED\",\"workflowName\":\"External PR Notify Trigger\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225699/job/119905757768\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Feature toggles CI\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225940/job/119905758730\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Frontend tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226401/job/119905761566\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Go Workspace Check\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225060/job/119905757359\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Lint Frontend\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225956/job/119905758644\",\"name\":\"check-separation\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"MT Service Compatibility\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:07Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225915/job/119905758267\",\"name\":\"main\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Checks\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:07Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802221465/job/119905745785\",\"name\":\"main\",\"startedAt\":\"2026-10-22T15:09:58Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR automation\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:31Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226070/job/119905759430\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR build Docker image\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:16Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225838/job/119905760674\",\"name\":\"reject-gh-secrets\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Reject GitHub secrets\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119905759191\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:16:41Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225938/job/119905758411\",\"name\":\"dashboard-schema-v2-e2e\",\"startedAt\":\"2026-10-22T15:10:41Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run dashboard schema v2 e2e\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:18Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225722/job/119905758198\",\"name\":\"Shellcheck scripts\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Shellcheck\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226083/job/119905760011\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Swagger generated code\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226166/job/119905760401\",\"name\":\"Detect whether the Docker image build is affected\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Test Dockerfile\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:21Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226595/job/119905762957\",\"name\":\"TruffleHog Secret Scan / trufflehog-scan\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"TruffleHog Secret Scanning\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225694/job/119905757526\",\"name\":\"Run Trufflehog\",\"startedAt\":\"2026-10-22T15:10:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Trufflehog\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:31Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226264/job/119905760947\",\"name\":\"check-separation\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unified Storage Compatibility\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:44Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226379/job/119905762160\",\"name\":\"verify-i18n / verify-i18n\",\"startedAt\":\"2026-10-22T15:10:11Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Verify i18n\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226122/job/119905762279\",\"name\":\"Detect whether code changed\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"COMPLETED\",\"workflowName\":\"golangci-lint\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:16Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802227038/job/119905764231\",\"name\":\"Check whether there are things to scan\",\"startedAt\":\"2026-10-22T15:10:02Z\",\"status\":\"COMPLETED\",\"workflowName\":\"zizmor GitHub Actions static analysis\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"0001-01-01T00:00:00Z\",\"conclusion\":\"\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119905761541\",\"name\":\"Detect changed files\",\"startedAt\":\"2026-10-22T15:10:01Z\",\"status\":\"IN_PROGRESS\",\"workflowName\":\"Check Frontend Test Coverage\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226230/job/119907631981\",\"name\":\"Validate Backend Configs\",\"startedAt\":\"2026-10-22T15:13:11Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Backend Code Checks\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225663/job/119906102894\",\"name\":\"Grafana (${{ matrix.shard }})\",\"startedAt\":\"2026-10-22T15:10:34Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Backend Unit Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:09:59Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226160/job/119905831926\",\"name\":\"dispatch-job-fork\",\"startedAt\":\"2026-10-22T15:10:06Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Dispatch check for patch conflicts\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225699/job/119906104425\",\"name\":\"Feature toggles documentation is in sync with source\",\"startedAt\":\"2026-10-22T15:10:34Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Feature toggles CI\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226401/job/119906105732\",\"name\":\"Go Workspace Check\",\"startedAt\":\"2026-10-22T15:10:34Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Go Workspace Check\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:09:59Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225060/job/119905838634\",\"name\":\"Verify API clients\",\"startedAt\":\"2026-10-22T15:10:07Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Lint Frontend\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226083/job/119906101974\",\"name\":\"Verify committed API specs match\",\"startedAt\":\"2026-10-22T15:10:34Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Swagger generated code\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226122/job/119906128521\",\"name\":\"go-fmt\",\"startedAt\":\"2026-10-22T15:10:37Z\",\"status\":\"COMPLETED\",\"workflowName\":\"golangci-lint\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:40Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226361/job/119906061719\",\"name\":\"Build base frontend\",\"startedAt\":\"2026-10-22T15:10:50Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Bundle size\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:14Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119906067410\",\"name\":\"Build backend\",\"startedAt\":\"2026-10-22T15:11:53Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:43Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226342/job/119906046484\",\"name\":\"check-endpoint-migration\",\"startedAt\":\"2026-10-22T15:10:30Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Endpoint Migration Feature Toggle Check\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:50Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225940/job/119906061025\",\"name\":\"Generate golden files\",\"startedAt\":\"2026-10-22T15:10:31Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Frontend tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:48Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226070/job/119906078130\",\"name\":\"setup\",\"startedAt\":\"2026-10-22T15:10:36Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR build Docker image\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:11Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906055539\",\"name\":\"Run Storybook a11y tests (light theme)\",\"startedAt\":\"2026-10-22T15:11:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:20:51Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226166/job/119906058788\",\"name\":\"build / full source (alpine)\",\"startedAt\":\"2026-10-22T15:10:53Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Test Dockerfile\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:32Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226595/job/119905970378\",\"name\":\"TruffleHog Secret Scan / Send TruffleHog metrics to Prometheus via Grafana Bench\",\"startedAt\":\"2026-10-22T15:10:23Z\",\"status\":\"COMPLETED\",\"workflowName\":\"TruffleHog Secret Scanning\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:53Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802227038/job/119905930676\",\"name\":\"Run zizmor / Generate and upload zizmor results 🌈\",\"startedAt\":\"2026-10-22T15:10:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"zizmor GitHub Actions static analysis\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:15Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226361/job/119906061772\",\"name\":\"Build pr frontend\",\"startedAt\":\"2026-10-22T15:11:27Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Bundle size\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:46Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906055833\",\"name\":\"Run Storybook a11y tests (dark theme)\",\"startedAt\":\"2026-10-22T15:11:57Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:26Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906055586\",\"name\":\"Run Storybook a11y tests (deut_prot_light theme)\",\"startedAt\":\"2026-10-22T15:11:48Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:36Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906055779\",\"name\":\"Run Storybook a11y tests (deut_prot_dark theme)\",\"startedAt\":\"2026-10-22T15:11:57Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:46Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906055855\",\"name\":\"Run Storybook a11y tests (tritanopia_light theme)\",\"startedAt\":\"2026-10-22T15:11:58Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:42Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906056157\",\"name\":\"Run Storybook a11y tests (tritanopia_dark theme)\",\"startedAt\":\"2026-10-22T15:12:02Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:39Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906055748\",\"name\":\"Run Storybook a11y tests (visual_refresh_dark theme)\",\"startedAt\":\"2026-10-22T15:11:58Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:28Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226180/job/119906055772\",\"name\":\"Run Storybook a11y tests (visual_refresh_light theme)\",\"startedAt\":\"2026-10-22T15:11:56Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Run Storybook a11y tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:30Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225663/job/119907486330\",\"name\":\"Grafana Enterprise (${{ matrix.shard }})\",\"startedAt\":\"2026-10-22T15:12:57Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Backend Unit Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226401/job/119906108171\",\"name\":\"Check Wire Changes\",\"startedAt\":\"2026-10-22T15:10:35Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Go Workspace Check\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:29Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226122/job/119906128383\",\"name\":\"lint-go\",\"startedAt\":\"2026-10-22T15:10:37Z\",\"status\":\"COMPLETED\",\"workflowName\":\"golangci-lint\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:42Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226361/job/119908288518\",\"name\":\"Check bundle size impact\",\"startedAt\":\"2026-10-22T15:14:17Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Bundle size\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119906072300\",\"name\":\"Coverage - @grafana/datapro\",\"startedAt\":\"2026-10-22T15:11:40Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Check Frontend Test Coverage\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:37Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119906067442\",\"name\":\"Build frontend\",\"startedAt\":\"2026-10-22T15:11:07Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:03Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225940/job/119906061095\",\"name\":\"Decoupled plugin tests\",\"startedAt\":\"2026-10-22T15:11:39Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Frontend tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:11:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225060/job/119905756868\",\"name\":\"Verify API clients (enterprise)\",\"startedAt\":\"2026-10-22T15:10:10Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Lint Frontend\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:14:54Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226070/job/119906237950\",\"name\":\"build frontend\",\"startedAt\":\"2026-10-22T15:10:56Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR build Docker image\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:15:38Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226166/job/119906058927\",\"name\":\"build / frontend\",\"startedAt\":\"2026-10-22T15:11:31Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Test Dockerfile\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:11:08Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802227038/job/119906284380\",\"name\":\"Run zizmor / Send zizmor metrics to Prometheus via Grafana Bench\",\"startedAt\":\"2026-10-22T15:10:55Z\",\"status\":\"COMPLETED\",\"workflowName\":\"zizmor GitHub Actions static analysis\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:12Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119906072245\",\"name\":\"Coverage - @grafana/dataviz-squad\",\"startedAt\":\"2026-10-22T15:11:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Check Frontend Test Coverage\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:21:10Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119906072338\",\"name\":\"Coverage - @grafana/grafana-operator-experience-squad\",\"startedAt\":\"2026-10-22T15:11:42Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Check Frontend Test Coverage\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:40Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119906072566\",\"name\":\"Coverage - @grafana/grafana-frontend-navigation\",\"startedAt\":\"2026-10-22T15:11:46Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Check Frontend Test Coverage\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225060/job/119906088064\",\"name\":\"Lint\",\"startedAt\":\"2026-10-22T15:10:32Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Lint Frontend\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:53Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802227038/job/119906349770\",\"name\":\"Run zizmor / Delete branch with dangerous-trigger vulnerability\",\"startedAt\":\"2026-10-22T15:11:00Z\",\"status\":\"COMPLETED\",\"workflowName\":\"zizmor GitHub Actions static analysis\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:22:36Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226351/job/119912258248\",\"name\":\"All coverage checks pass\",\"startedAt\":\"2026-10-22T15:22:31Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Check Frontend Test Coverage\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:30Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119906067162\",\"name\":\"Verify Storybook (Playwright)\",\"startedAt\":\"2026-10-22T15:10:48Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:12:19Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225940/job/119906061081\",\"name\":\"Rspack plugin tests\",\"startedAt\":\"2026-10-22T15:11:34Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Frontend tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:16:01Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226070/job/119906238079\",\"name\":\"build backend\",\"startedAt\":\"2026-10-22T15:11:22Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR build Docker image\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:16:04Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226166/job/119906059212\",\"name\":\"build / backend (linux-amd64)\",\"startedAt\":\"2026-10-22T15:11:31Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Test Dockerfile\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:21:31Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500903\",\"name\":\"Playwright E2E tests (1/8)\",\"startedAt\":\"2026-10-22T15:16:48Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:12:20Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225940/job/119906061174\",\"name\":\"Packages unit tests\",\"startedAt\":\"2026-10-22T15:11:25Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Frontend tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:15:41Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225060/job/119906041504\",\"name\":\"Lint\",\"startedAt\":\"2026-10-22T15:10:54Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Lint Frontend\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:19:33Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226070/job/119909331945\",\"name\":\"build targz\",\"startedAt\":\"2026-10-22T15:17:27Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR build Docker image\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:19:18Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226166/job/119909360999\",\"name\":\"build / source tarball\",\"startedAt\":\"2026-10-22T15:17:11Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Test Dockerfile\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:20:44Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500596\",\"name\":\"Playwright E2E tests (2/8)\",\"startedAt\":\"2026-10-22T15:15:36Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:20:03Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500509\",\"name\":\"Playwright E2E tests (3/8)\",\"startedAt\":\"2026-10-22T15:14:46Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:20:42Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500638\",\"name\":\"Playwright E2E tests (4/8)\",\"startedAt\":\"2026-10-22T15:15:03Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:19:15Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500470\",\"name\":\"Playwright E2E tests (5/8)\",\"startedAt\":\"2026-10-22T15:14:58Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:20:25Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500692\",\"name\":\"Playwright E2E tests (6/8)\",\"startedAt\":\"2026-10-22T15:14:59Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:21:51Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500530\",\"name\":\"Playwright E2E tests (7/8)\",\"startedAt\":\"2026-10-22T15:15:39Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:24:10Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500911\",\"name\":\"Playwright E2E tests (8/8)\",\"startedAt\":\"2026-10-22T15:15:57Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:13:50Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225940/job/119908082040\",\"name\":\"Unit tests (${{ matrix.shard }} / ${{ matrix.total }})\",\"startedAt\":\"2026-10-22T15:13:55Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Frontend tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:10:28Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802225060/job/119907481150\",\"name\":\"Typecheck\",\"startedAt\":\"2026-10-22T15:12:56Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Lint Frontend\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:16:46Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226430/job/119908500588\",\"name\":\"Diagnostics e2e (on-prem) / Download diagnostics e2e (on-prem)\",\"startedAt\":\"2026-10-22T15:14:44Z\",\"status\":\"COMPLETED\",\"workflowName\":\"End-to-end tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:24:43Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226070/job/119911353816\",\"name\":\"build docker\",\"startedAt\":\"2026-10-22T15:20:03Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR build Docker image\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:23:48Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/grafana/grafana/actions/runs/39802226166/job/119911212532\",\"name\":\"build / variants (targz) / alpine\",\"startedAt\":\"2026-10-22T15:20:06Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Test Dockerfile\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-22T15:23:43Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://gith",
+            "stderr": "",
+            "interrupted": false,
+            "isImage": false,
+            "noOutputExpected": false,
+            "persistedOutputPath": "~/.claude/projects/-private-var-folders-qr-fn98whcd7xs3ltx5z7vcgvzw0000gn-T-pr-ready-eval-MMJn3N/eaf0d395-2dd6-49f6-9bd9-cd294514982d/tool-results/bqfrxgs5h.txt",
+            "persistedOutputSize": 41013
+          },
+          "tool_result_meta": [
+            {
+              "id": "toolu_01Ne7QPQ4GP5LMe14QBTp8eM",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "subcommandResults"
+              }
+            }
+          ]
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "content": "Exit code 8\nCheck Wire Changes\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226401/job/119906108171\t\nFeature toggles documentation is in sync with source\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225699/job/119906104425\t\nGo Workspace Check\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226401/job/119906105732\t\nGrafana (${{ matrix.shard }})\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225663/job/119906102894\t\nGrafana Enterprise (${{ matrix.shard }})\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225663/job/119907486330\t\nPublish metrics\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908566903\t\nRun zizmor / Delete branch with dangerous-trigger vulnerability\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802227038/job/119906349770\t\nbuild / variants (targz) / alpine-slim\tpass\t3m32s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212562\t\nbuild / variants (targz) / alpine\tpass\t3m42s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212532\t\nTest Patches (event)\tpass\t0\thttps://github.com/grafana/security-patch-actions/actions/runs/39802257555\tTest Patches (event) success for grafana/grafana@macabu/pub-dash-email-share-ff-migrate-fe\npolicy-bot: main\tpending\t0\thttps://github-policy-bot-grafana.grafana-ops.net/details/grafana/grafana/135725\t0/1 rules approved\npolicy-bot\tpending\t0\thttps://github-policy-bot-grafana.grafana-ops.net/details/grafana/grafana/135725\t0/1 rules approved\nbuild / source tarball\tpass\t2m7s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119909360999\t\nPlaywright E2E tests (1/8)\tpass\t4m43s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500903\t\nPlaywright E2E tests (8/8)\tpass\t8m13s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500911\t\nPlaywright E2E tests (7/8)\tpass\t6m12s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500530\t\nPlaywright E2E tests (2/8)\tpass\t5m8s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500596\t\nPlaywright E2E tests (4/8)\tpass\t5m39s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500638\t\nPlaywright E2E tests (6/8)\tpass\t5m26s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500692\t\nPlaywright E2E tests (5/8)\tpass\t4m17s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500470\t\nPlaywright E2E tests (3/8)\tpass\t5m17s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500509\t\nbuild / full source (alpine)\tpass\t9m58s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119906058788\t\nDiagnostics e2e (on-prem) / Download diagnostics e2e (on-prem)\tpass\t2m2s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500588\t\nCheck bundle size impact\tpass\t25s\thttps://github.com/grafana/grafana/actions/runs/39802226361/job/119908288518\t\nUnit tests (${{ matrix.shard }} / ${{ matrix.total }})\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908082040\t\nUnit tests (9 / 16)\tpass\t3m12s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028930\t\nUnit tests (4 / 16)\tpass\t2m56s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028949\t\nUnit tests (10 / 16)\tpass\t3m46s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029138\t\nUnit tests (2 / 16)\tpass\t2m59s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029176\t\nUnit tests (3 / 16)\tpass\t2m39s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029074\t\nUnit tests (16 / 16)\tpass\t3m7s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028876\t\nUnit tests (15 / 16)\tpass\t5m22s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029145\t\nUnit tests (5 / 16)\tpass\t3m30s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028778\t\nUnit tests (1 / 16)\tpass\t3m45s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029028\t\nUnit tests (6 / 16)\tpass\t4m2s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029106\t\nUnit tests (7 / 16)\tpass\t3m26s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028772\t\nUnit tests (8 / 16)\tpass\t3m1s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029123\t\nUnit tests (14 / 16)\tpass\t2m50s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029063\t\nUnit tests (11 / 16)\tpass\t3m17s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029446\t\nUnit tests (12 / 16)\tpass\t4m38s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028892\t\nUnit tests (13 / 16)\tpass\t4m45s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028926\t\nValidate Backend Configs\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226230/job/119907631981\t\nSocke\n\n... [5359 characters truncated] ...\n\n663/job/119905758517\t\nDetect whether code changed\tpass\t31s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119905759430\t\nTruffleHog Secret Scan / Send TruffleHog metrics to Prometheus via Grafana Bench\tpass\t9s\thttps://github.com/grafana/grafana/actions/runs/39802226595/job/119905970378\t\nCursor Bugbot\tpass\t1m57s\thttps://cursor.com/docs/bugbot\t\nRun zizmor / Generate and upload zizmor results 🌈\tpass\t35s\thttps://github.com/grafana/grafana/actions/runs/39802227038/job/119905930676\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119905757359\t\nVerify API clients (enterprise)\tpass\t1m20s\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119905756868\t\nVerify API clients\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119905838634\t\ndispatch-job-fork\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226160/job/119905831926\t\nsigned-commits\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802221357/job/119905798145\t\nCheck whether there are things to scan\tpass\t14s\thttps://github.com/grafana/grafana/actions/runs/39802227038/job/119905764231\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226180/job/119905759191\t\nDetect whether code changed\tpass\t30s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119905758730\t\nDetect changed files\tpending\t0\thttps://github.com/grafana/grafana/actions/runs/39802226351/job/119905761541\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226122/job/119905762279\t\nTruffleHog Secret Scan / trufflehog-scan\tpass\t20s\thttps://github.com/grafana/grafana/actions/runs/39802226595/job/119905762957\t\nDetect frontend changes\tpass\t29s\thttps://github.com/grafana/grafana/actions/runs/39802226361/job/119905761975\t\nSetup opted-in teams\tpass\t5s\thttps://github.com/grafana/grafana/actions/runs/39802226351/job/119905762017\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226230/job/119905760593\t\nDetect whether code changed\tpass\t29s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119905764302\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226401/job/119905761566\t\nbuild / variants (targz) / distroless\tpass\t3m41s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212407\t\nbuild / variants (targz) / distroless-slim\tpass\t3m31s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212807\t\nbuild / variants (targz) / ubuntu\tpass\t3m41s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212553\t\nbuild / variants (targz) / ubuntu-slim\tpass\t3m22s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911213016\t\nbuild backend\tpass\t4m39s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119906238079\t\nbuild docker\tpass\t4m40s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119911353816\t\nbuild frontend\tpass\t3m58s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119906237950\t\nbuild targz\tpass\t2m6s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119909331945\t\ncheck-endpoint-migration\tpass\t13s\thttps://github.com/grafana/grafana/actions/runs/39802226342/job/119906046484\t\ncheck-separation\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802225956/job/119905758644\t\ncheck-separation\tpass\t30s\thttps://github.com/grafana/grafana/actions/runs/39802226264/job/119905760947\t\ncodeowners-validator\tpass\t33s\thttps://github.com/grafana/grafana/actions/runs/39802225926/job/119905758243\t\ndashboard-schema-v2-e2e\tpass\t6m0s\thttps://github.com/grafana/grafana/actions/runs/39802225938/job/119905758411\t\ndetect-changes\tpass\t27s\thttps://github.com/grafana/grafana/actions/runs/39802226342/job/119905761871\t\ndispatch-job\tpass\t4m3s\thttps://github.com/grafana/grafana/actions/runs/39802226160/job/119905759120\t\nlicense/cla\tpass\t0\thttps://cla-assistant.io/grafana/grafana?pullRequest=135725\tContributor License Agreement is signed.\nlint-knip\tpass\t2m6s\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119906041154\t\nmain\tpass\t9s\thttps://github.com/grafana/grafana/actions/runs/39802221465/job/119905745785\t\nmain\tpass\t8s\thttps://github.com/grafana/grafana/actions/runs/39802221661/job/119905746063\t\nmain\tpass\t7s\thttps://github.com/grafana/grafana/actions/runs/39802225915/job/119905758267\t\nreject-gh-secrets\tpass\t16s\thttps://github.com/grafana/grafana/actions/runs/39802225838/job/119905760674\t\nsemgrep-cloud-platform/scan\tpass\t1m2s\thttps://semgrep.dev/orgs/grafana_labs/projects/3521502/scans/252030678\t\nsetup\tpass\t12s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119906078130\t\nsigned-commits\tpass\t4s\thttps://github.com/grafana/grafana/actions/runs/39802224928/job/119905754995\t\nverify-i18n / verify-i18n\tpass\t3m33s\thttps://github.com/grafana/grafana/actions/runs/39802226379/job/119905762160",
+                "is_error": true,
+                "tool_use_id": "toolu_0157gaSEvUrMXs9Yhh1yxFic"
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "eaf0d395-2dd6-49f6-9bd9-cd294514982d",
+          "uuid": "25a4c262-604d-4b72-81c8-dcb229ceee2e",
+          "timestamp": "2026-10-22T15:38:47.486Z",
+          "tool_use_result": "Error: Exit code 8\nCheck Wire Changes\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226401/job/119906108171\t\nFeature toggles documentation is in sync with source\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225699/job/119906104425\t\nGo Workspace Check\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226401/job/119906105732\t\nGrafana (${{ matrix.shard }})\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225663/job/119906102894\t\nGrafana Enterprise (${{ matrix.shard }})\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225663/job/119907486330\t\nPublish metrics\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908566903\t\nRun zizmor / Delete branch with dangerous-trigger vulnerability\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802227038/job/119906349770\t\nbuild / variants (targz) / alpine-slim\tpass\t3m32s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212562\t\nbuild / variants (targz) / alpine\tpass\t3m42s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212532\t\nTest Patches (event)\tpass\t0\thttps://github.com/grafana/security-patch-actions/actions/runs/39802257555\tTest Patches (event) success for grafana/grafana@macabu/pub-dash-email-share-ff-migrate-fe\npolicy-bot: main\tpending\t0\thttps://github-policy-bot-grafana.grafana-ops.net/details/grafana/grafana/135725\t0/1 rules approved\npolicy-bot\tpending\t0\thttps://github-policy-bot-grafana.grafana-ops.net/details/grafana/grafana/135725\t0/1 rules approved\nbuild / source tarball\tpass\t2m7s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119909360999\t\nPlaywright E2E tests (1/8)\tpass\t4m43s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500903\t\nPlaywright E2E tests (8/8)\tpass\t8m13s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500911\t\nPlaywright E2E tests (7/8)\tpass\t6m12s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500530\t\nPlaywright E2E tests (2/8)\tpass\t5m8s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500596\t\nPlaywright E2E tests (4/8)\tpass\t5m39s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500638\t\nPlaywright E2E tests (6/8)\tpass\t5m26s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500692\t\nPlaywright E2E tests (5/8)\tpass\t4m17s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500470\t\nPlaywright E2E tests (3/8)\tpass\t5m17s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500509\t\nbuild / full source (alpine)\tpass\t9m58s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119906058788\t\nDiagnostics e2e (on-prem) / Download diagnostics e2e (on-prem)\tpass\t2m2s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119908500588\t\nCheck bundle size impact\tpass\t25s\thttps://github.com/grafana/grafana/actions/runs/39802226361/job/119908288518\t\nUnit tests (${{ matrix.shard }} / ${{ matrix.total }})\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908082040\t\nUnit tests (9 / 16)\tpass\t3m12s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028930\t\nUnit tests (4 / 16)\tpass\t2m56s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028949\t\nUnit tests (10 / 16)\tpass\t3m46s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029138\t\nUnit tests (2 / 16)\tpass\t2m59s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029176\t\nUnit tests (3 / 16)\tpass\t2m39s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029074\t\nUnit tests (16 / 16)\tpass\t3m7s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028876\t\nUnit tests (15 / 16)\tpass\t5m22s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029145\t\nUnit tests (5 / 16)\tpass\t3m30s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028778\t\nUnit tests (1 / 16)\tpass\t3m45s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029028\t\nUnit tests (6 / 16)\tpass\t4m2s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029106\t\nUnit tests (7 / 16)\tpass\t3m26s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028772\t\nUnit tests (8 / 16)\tpass\t3m1s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029123\t\nUnit tests (14 / 16)\tpass\t2m50s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029063\t\nUnit tests (11 / 16)\tpass\t3m17s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908029446\t\nUnit tests (12 / 16)\tpass\t4m38s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028892\t\nUnit tests (13 / 16)\tpass\t4m45s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119908028926\t\nValidate Backend Configs\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226230/job/119907631981\t\nSocke\n\n... [5359 characters truncated] ...\n\n663/job/119905758517\t\nDetect whether code changed\tpass\t31s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119905759430\t\nTruffleHog Secret Scan / Send TruffleHog metrics to Prometheus via Grafana Bench\tpass\t9s\thttps://github.com/grafana/grafana/actions/runs/39802226595/job/119905970378\t\nCursor Bugbot\tpass\t1m57s\thttps://cursor.com/docs/bugbot\t\nRun zizmor / Generate and upload zizmor results 🌈\tpass\t35s\thttps://github.com/grafana/grafana/actions/runs/39802227038/job/119905930676\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119905757359\t\nVerify API clients (enterprise)\tpass\t1m20s\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119905756868\t\nVerify API clients\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119905838634\t\ndispatch-job-fork\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802226160/job/119905831926\t\nsigned-commits\tskipping\t0\thttps://github.com/grafana/grafana/actions/runs/39802221357/job/119905798145\t\nCheck whether there are things to scan\tpass\t14s\thttps://github.com/grafana/grafana/actions/runs/39802227038/job/119905764231\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226180/job/119905759191\t\nDetect whether code changed\tpass\t30s\thttps://github.com/grafana/grafana/actions/runs/39802225940/job/119905758730\t\nDetect changed files\tpending\t0\thttps://github.com/grafana/grafana/actions/runs/39802226351/job/119905761541\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226122/job/119905762279\t\nTruffleHog Secret Scan / trufflehog-scan\tpass\t20s\thttps://github.com/grafana/grafana/actions/runs/39802226595/job/119905762957\t\nDetect frontend changes\tpass\t29s\thttps://github.com/grafana/grafana/actions/runs/39802226361/job/119905761975\t\nSetup opted-in teams\tpass\t5s\thttps://github.com/grafana/grafana/actions/runs/39802226351/job/119905762017\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226230/job/119905760593\t\nDetect whether code changed\tpass\t29s\thttps://github.com/grafana/grafana/actions/runs/39802226430/job/119905764302\t\nDetect whether code changed\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802226401/job/119905761566\t\nbuild / variants (targz) / distroless\tpass\t3m41s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212407\t\nbuild / variants (targz) / distroless-slim\tpass\t3m31s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212807\t\nbuild / variants (targz) / ubuntu\tpass\t3m41s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911212553\t\nbuild / variants (targz) / ubuntu-slim\tpass\t3m22s\thttps://github.com/grafana/grafana/actions/runs/39802226166/job/119911213016\t\nbuild backend\tpass\t4m39s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119906238079\t\nbuild docker\tpass\t4m40s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119911353816\t\nbuild frontend\tpass\t3m58s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119906237950\t\nbuild targz\tpass\t2m6s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119909331945\t\ncheck-endpoint-migration\tpass\t13s\thttps://github.com/grafana/grafana/actions/runs/39802226342/job/119906046484\t\ncheck-separation\tpass\t28s\thttps://github.com/grafana/grafana/actions/runs/39802225956/job/119905758644\t\ncheck-separation\tpass\t30s\thttps://github.com/grafana/grafana/actions/runs/39802226264/job/119905760947\t\ncodeowners-validator\tpass\t33s\thttps://github.com/grafana/grafana/actions/runs/39802225926/job/119905758243\t\ndashboard-schema-v2-e2e\tpass\t6m0s\thttps://github.com/grafana/grafana/actions/runs/39802225938/job/119905758411\t\ndetect-changes\tpass\t27s\thttps://github.com/grafana/grafana/actions/runs/39802226342/job/119905761871\t\ndispatch-job\tpass\t4m3s\thttps://github.com/grafana/grafana/actions/runs/39802226160/job/119905759120\t\nlicense/cla\tpass\t0\thttps://cla-assistant.io/grafana/grafana?pullRequest=135725\tContributor License Agreement is signed.\nlint-knip\tpass\t2m6s\thttps://github.com/grafana/grafana/actions/runs/39802225060/job/119906041154\t\nmain\tpass\t9s\thttps://github.com/grafana/grafana/actions/runs/39802221465/job/119905745785\t\nmain\tpass\t8s\thttps://github.com/grafana/grafana/actions/runs/39802221661/job/119905746063\t\nmain\tpass\t7s\thttps://github.com/grafana/grafana/actions/runs/39802225915/job/119905758267\t\nreject-gh-secrets\tpass\t16s\thttps://github.com/grafana/grafana/actions/runs/39802225838/job/119905760674\t\nsemgrep-cloud-platform/scan\tpass\t1m2s\thttps://semgrep.dev/orgs/grafana_labs/projects/3521502/scans/252030678\t\nsetup\tpass\t12s\thttps://github.com/grafana/grafana/actions/runs/39802226070/job/119906078130\t\nsigned-commits\tpass\t4s\thttps://github.com/grafana/grafana/actions/runs/39802224928/job/119905754995\t\nverify-i18n / verify-i18n\tpass\t3m33s\thttps://github.com/grafana/grafana/actions/runs/39802226379/job/119905762160",
+          "tool_result_meta": [
+            {
+              "id": "toolu_0157gaSEvUrMXs9Yhh1yxFic",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "subcommandResults"
+              }
+            }
+          ]
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXTXa8voDPTSUNsZWMZ",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "Not ready to merge yet.\n\n- **Merge state:** GitHub reports it as BLOCKED, not CLEAN. The PR is open, not a draft, and has no merge conflicts.\n- **Review:** The review decision is APPROVED, so no review is blocking it.\n- **Checks:** The rollup isn't fully green. The `policy-bot` and `policy-bot: main` checks are pending with \"0/1 rules approved\". That is probably what's blocking the merge. A \"Detect changed files\" check is also still pending. The pass, skipped, and Playwright E2E results I saw were fine, but part of the `gh pr checks` output was truncated, so I didn't see every line.\n- **Head commit:** It's `6e25c7b71ea68998ec8dc48fdc1ba51a25b47cbf`. You didn't tell me which commit you expect, so I can't confirm it matches.\n- **Merge queue:** The commands I'm allowed to use don't show whether the PR is in a merge queue.\n\nThe policy-bot approval rule is unmet even though the review decision is APPROVED. It likely needs an approval from a specific owner or team, and the author or reviewers should check the policy-bot details link on the PR.\n\nCLAIM: not ready\nNEXT: reviewer"
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 5985,
+              "cache_read_input_tokens": 4892,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 5985
+              },
+              "output_tokens": 419,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "eaf0d395-2dd6-49f6-9bd9-cd294514982d",
+          "uuid": "a67908ce-449f-4ce3-8662-0ae8cb12e81d",
+          "timestamp": "2026-10-22T15:38:52.833Z",
+          "request_id": "req_011CgHXTXH2nWFD3D94cATsp"
+        }
+      ]
+    }
+  ]
+}

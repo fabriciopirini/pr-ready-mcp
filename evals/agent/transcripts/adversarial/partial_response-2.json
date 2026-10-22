@@ -1,0 +1,150 @@
+{
+  "task": {
+    "name": "partial_response",
+    "scenario": "partial_response",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario partial_response",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:40:36.735Z",
+  "finished_at": "2026-10-22T15:40:44.052Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I can't tell yet whether cli/cli#14716 is ready to merge. The readiness check failed. GitHub returned a FORBIDDEN error when the tool tried to read the check rollup on the PR's head commit. That means I couldn't confirm the merge state, the check results, the review decision, the merge-queue status or the head commit. The tool marks this error as not retryable, so trying again probably won't help. It most likely needs an account or token with access to that repository's check data.\n\nI haven't seen anything wrong with the PR itself. I just can't confirm it's ready.\n\nCLAIM: cannot verify\nNEXT: unknown",
+  "num_turns": 2,
+  "duration_ms": 3334,
+  "cost_usd": 0.0139755,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXbqpU31EMYgjw75iau",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01WvxmXG3hYfBnVAkV9c4YcE",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d20eb2ed-88a5-4f18-be97-0b12e397fcc7",
+      "uuid": "51196c26-9f90-4e52-a837-4ec94f100590",
+      "timestamp": "2026-10-22T15:40:41.359Z",
+      "request_id": "req_011CgHXbqXN5vewvuhkve27U",
+      "wire_tool_inputs": {
+        "toolu_01WvxmXG3hYfBnVAkV9c4YcE": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01WvxmXG3hYfBnVAkV9c4YcE",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "tool_result",
+            "content": "{\"code\":\"invalid_response\",\"message\":\"GitHub returned errors for cli/cli#14716: FORBIDDEN at repository.pullRequest.commits.nodes.0.commit.statusCheckRollup.\",\"retryable\":false}",
+            "is_error": true,
+            "tool_use_id": "toolu_01WvxmXG3hYfBnVAkV9c4YcE"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d20eb2ed-88a5-4f18-be97-0b12e397fcc7",
+      "uuid": "5f3431b6-d7b7-4fa0-b975-77bfd2a0d781",
+      "timestamp": "2026-10-22T15:40:41.388Z",
+      "tool_use_result": "Error: {\"code\":\"invalid_response\",\"message\":\"GitHub returned errors for cli/cli#14716: FORBIDDEN at repository.pullRequest.commits.nodes.0.commit.statusCheckRollup.\",\"retryable\":false}",
+      "tool_result_meta": [
+        {
+          "id": "toolu_01WvxmXG3hYfBnVAkV9c4YcE",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXbvWkXf5NQLtytiqEm",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't tell yet whether cli/cli#14716 is ready to merge. The readiness check failed. GitHub returned a FORBIDDEN error when the tool tried to read the check rollup on the PR's head commit. That means I couldn't confirm the merge state, the check results, the review decision, the merge-queue status or the head commit. The tool marks this error as not retryable, so trying again probably won't help. It most likely needs an account or token with access to that repository's check data.\n\nI haven't seen anything wrong with the PR itself. I just can't confirm it's ready.\n\nCLAIM: cannot verify\nNEXT: unknown"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 181,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 181
+          },
+          "output_tokens": 205,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d20eb2ed-88a5-4f18-be97-0b12e397fcc7",
+      "uuid": "0ec7169b-c006-4670-8727-b9e78d3339d2",
+      "timestamp": "2026-10-22T15:40:43.558Z",
+      "request_id": "req_011CgHXbvEsfsa8h9xhMkXAr"
+    }
+  ]
+}

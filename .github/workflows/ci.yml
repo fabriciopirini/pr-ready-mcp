@@ -23,3 +23,23 @@ jobs:
       - run: npm test
       - name: Tool reference is up to date
         run: npm run docs && git diff --exit-code docs/
+
+  # The oldest supported Node: install the packed artifact, start it, and run the built decision
+  # path on a replayed fixture. No GitHub token and no network calls to GitHub.
+  minimum-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm pack --pack-destination "$RUNNER_TEMP"
+      - name: Install the packed artifact in an empty directory
+        run: |
+          mkdir "$RUNNER_TEMP/consumer"
+          cd "$RUNNER_TEMP/consumer"
+          npm init -y > /dev/null
+          npm install "$RUNNER_TEMP"/pr-ready-mcp-*.tgz
+      - run: node scripts/smoke.mjs "$RUNNER_TEMP/consumer/node_modules/pr-ready-mcp/dist/index.js"

@@ -1,0 +1,184 @@
+{
+  "task": {
+    "name": "checks_missing",
+    "scenario": "checks_missing",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario checks_missing",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:40:10.115Z",
+  "finished_at": "2026-10-22T15:40:19.638Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I can't verify yet that cli/cli#14716 is ready to merge.\n\nHere is what the tool found for head commit `936921fa9e67cdbf78fb25abc6252afabafef056`, checked at 2026-10-22 15:40 UTC:\n- **Merge state:** CLEAN and mergeable.\n- **Review:** approved. `reviewer-1` is still listed as a requested reviewer.\n- **Merge queue:** not in one.\n- **Checks:** none have reported on this commit. The check rollup is empty, so I can't confirm it is SUCCESS.\n\nYour policy requires a successful check rollup. Checks may simply not have started yet, or this repo may not run CI on this branch. Either way, I can't call the PR ready until checks report and pass.\n\nYou didn't give me an expected head SHA, so I also haven't confirmed that this head is the commit you expect.\n\nI'd re-check in a minute or two. If checks still don't appear, someone should find out why CI isn't running on this commit.\n\nCLAIM: cannot verify\nNEXT: wait",
+  "num_turns": 2,
+  "duration_ms": 5661,
+  "cost_usd": 0.0164615,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXZt5bzJwyDd1LhEyjd",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01RpmWX26mLD7QSqhttHMwcH",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "4bd5ee77-527c-4618-84e5-b17654e8ff53",
+      "uuid": "ccc2b621-f680-444c-9d5b-a677b75a0b7b",
+      "timestamp": "2026-10-22T15:40:15.500Z",
+      "request_id": "req_011CgHXZsqiPDPR2MER3gsSx",
+      "wire_tool_inputs": {
+        "toolu_01RpmWX26mLD7QSqhttHMwcH": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01RpmWX26mLD7QSqhttHMwcH",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_01RpmWX26mLD7QSqhttHMwcH",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:15.517Z\",\"reasons\":[{\"code\":\"checks_missing\",\"owner\":\"wait\",\"detail\":\"No check has reported on the head commit.\",\"fix\":\"After a push, checks usually appear within a minute; call pr_readiness again. If the repository has no CI, this tool cannot verify readiness; facts.merge_state is GitHub's own aggregate.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":null,\"total\":0,\"listed\":0,\"details_complete\":true,\"by_state\":{},\"failing\":[],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "4bd5ee77-527c-4618-84e5-b17654e8ff53",
+      "uuid": "a9f62098-4288-433f-9264-270049c0b453",
+      "timestamp": "2026-10-22T15:40:15.520Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:15.517Z\",\"reasons\":[{\"code\":\"checks_missing\",\"owner\":\"wait\",\"detail\":\"No check has reported on the head commit.\",\"fix\":\"After a push, checks usually appear within a minute; call pr_readiness again. If the repository has no CI, this tool cannot verify readiness; facts.merge_state is GitHub's own aggregate.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":null,\"total\":0,\"listed\":0,\"details_complete\":true,\"by_state\":{},\"failing\":[],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:40:15.517Z",
+          "reasons": [
+            {
+              "code": "checks_missing",
+              "owner": "wait",
+              "detail": "No check has reported on the head commit.",
+              "fix": "After a push, checks usually appear within a minute; call pr_readiness again. If the repository has no CI, this tool cannot verify readiness; facts.merge_state is GitHub's own aggregate."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "CLEAN",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "APPROVED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": null,
+              "total": 0,
+              "listed": 0,
+              "details_complete": true,
+              "by_state": {},
+              "failing": [],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_01RpmWX26mLD7QSqhttHMwcH",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXa21b4W4r9rJkhSpcx",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't verify yet that cli/cli#14716 is ready to merge.\n\nHere is what the tool found for head commit `936921fa9e67cdbf78fb25abc6252afabafef056`, checked at 2026-10-22 15:40 UTC:\n- **Merge state:** CLEAN and mergeable.\n- **Review:** approved. `reviewer-1` is still listed as a requested reviewer.\n- **Merge queue:** not in one.\n- **Checks:** none have reported on this commit. The check rollup is empty, so I can't confirm it is SUCCESS.\n\nYour policy requires a successful check rollup. Checks may simply not have started yet, or this repo may not run CI on this branch. Either way, I can't call the PR ready until checks report and pass.\n\nYou didn't give me an expected head SHA, so I also haven't confirmed that this head is the commit you expect.\n\nI'd re-check in a minute or two. If checks still don't appear, someone should find out why CI isn't running on this commit.\n\nCLAIM: cannot verify\nNEXT: wait"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 440,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 440
+          },
+          "output_tokens": 350,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "4bd5ee77-527c-4618-84e5-b17654e8ff53",
+      "uuid": "14b35617-e10e-4cfc-8edd-43a40284726f",
+      "timestamp": "2026-10-22T15:40:19.321Z",
+      "request_id": "req_011CgHXa1dm8M5x4kR65U1Mr"
+    }
+  ]
+}

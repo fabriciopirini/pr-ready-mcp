@@ -1,0 +1,187 @@
+{
+  "task": {
+    "name": "unexplained_state",
+    "scenario": "unstable_unexplained",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario unstable_unexplained",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:40:22.764Z",
+  "finished_at": "2026-10-22T15:40:32.400Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I can't verify that cli/cli#14716 is ready to merge yet. It isn't ready under your policy as it stands.\n\nThe check was run at 2026-10-22 15:40 UTC against head `936921fa9e67cdbf78fb25abc6252afabafef056`. I didn't pass an expected head SHA, so I haven't confirmed that this is the commit you expect.\n\n**What looks fine:**\n- The PR is open and not a draft.\n- It's approved, and it isn't in a merge queue.\n- The check rollup is SUCCESS. 9 checks passed, 7 were skipped, and none failed or are still running.\n- GitHub reports the PR as mergeable, meaning no conflicts.\n\n**What blocks it:** GitHub's merge state is UNSTABLE, not CLEAN. Normally that means some check isn't passing. Yet the rollup shows only passes and skips, so I can't tell what is causing it. The tool can't explain this state either. The PR page may show the cause: https://github.com/cli/cli/pull/14716.\n\n`reviewer-1` is also listed as a requested reviewer, even though the overall decision is APPROVED. That may be a pending re-request, but it isn't what's driving the UNSTABLE state.\n\nCLAIM: cannot verify\nNEXT: unknown",
+  "num_turns": 2,
+  "duration_ms": 5721,
+  "cost_usd": 0.0173455,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXaow5mXr1VShZVAmxG",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01GFLtAkoxpe3C3tUvBp8zh4",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d27cf3d9-e641-437b-946e-1638908f76e5",
+      "uuid": "b9712618-e647-41d7-9c9c-173a7de7d587",
+      "timestamp": "2026-10-22T15:40:27.724Z",
+      "request_id": "req_011CgHXaocFM9vFAUwX4duMu",
+      "wire_tool_inputs": {
+        "toolu_01GFLtAkoxpe3C3tUvBp8zh4": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01GFLtAkoxpe3C3tUvBp8zh4",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_01GFLtAkoxpe3C3tUvBp8zh4",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:27.773Z\",\"reasons\":[{\"code\":\"unsupported_merge_state\",\"owner\":\"unknown\",\"detail\":\"GitHub reports merge state UNSTABLE, which this tool cannot evaluate or attribute.\",\"fix\":\"Inspect the PR page: https://github.com/cli/cli/pull/14716. Not verified.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"UNSTABLE\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d27cf3d9-e641-437b-946e-1638908f76e5",
+      "uuid": "6237fb1e-93e5-4638-9f6a-62ef40f1a00e",
+      "timestamp": "2026-10-22T15:40:27.778Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:27.773Z\",\"reasons\":[{\"code\":\"unsupported_merge_state\",\"owner\":\"unknown\",\"detail\":\"GitHub reports merge state UNSTABLE, which this tool cannot evaluate or attribute.\",\"fix\":\"Inspect the PR page: https://github.com/cli/cli/pull/14716. Not verified.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"UNSTABLE\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:40:27.773Z",
+          "reasons": [
+            {
+              "code": "unsupported_merge_state",
+              "owner": "unknown",
+              "detail": "GitHub reports merge state UNSTABLE, which this tool cannot evaluate or attribute.",
+              "fix": "Inspect the PR page: https://github.com/cli/cli/pull/14716. Not verified."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "UNSTABLE",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "APPROVED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": "SUCCESS",
+              "total": 16,
+              "listed": 16,
+              "details_complete": true,
+              "by_state": {
+                "SKIPPED": 7,
+                "SUCCESS": 9
+              },
+              "failing": [],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_01GFLtAkoxpe3C3tUvBp8zh4",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXavRX3vhkkUM7WjigG",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't verify that cli/cli#14716 is ready to merge yet. It isn't ready under your policy as it stands.\n\nThe check was run at 2026-10-22 15:40 UTC against head `936921fa9e67cdbf78fb25abc6252afabafef056`. I didn't pass an expected head SHA, so I haven't confirmed that this is the commit you expect.\n\n**What looks fine:**\n- The PR is open and not a draft.\n- It's approved, and it isn't in a merge queue.\n- The check rollup is SUCCESS. 9 checks passed, 7 were skipped, and none failed or are still running.\n- GitHub reports the PR as mergeable, meaning no conflicts.\n\n**What blocks it:** GitHub's merge state is UNSTABLE, not CLEAN. Normally that means some check isn't passing. Yet the rollup shows only passes and skips, so I can't tell what is causing it. The tool can't explain this state either. The PR page may show the cause: https://github.com/cli/cli/pull/14716.\n\n`reviewer-1` is also listed as a requested reviewer, even though the overall decision is APPROVED. That may be a pending re-request, but it isn't what's driving the UNSTABLE state.\n\nCLAIM: cannot verify\nNEXT: unknown"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 461,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 461
+          },
+          "output_tokens": 430,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "d27cf3d9-e641-437b-946e-1638908f76e5",
+      "uuid": "f2bbba7a-b24a-416f-a8a5-4aca323fabc7",
+      "timestamp": "2026-10-22T15:40:31.968Z",
+      "request_id": "req_011CgHXav1xEnfsyTafGMZGo"
+    }
+  ]
+}
