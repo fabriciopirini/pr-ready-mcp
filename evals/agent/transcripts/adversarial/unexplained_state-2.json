@@ -1,0 +1,230 @@
+{
+  "task": {
+    "name": "unexplained_state",
+    "scenario": "unstable_unexplained",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario unstable_unexplained",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:40:25.950Z",
+  "finished_at": "2026-10-22T15:40:36.733Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I can't confirm that cli/cli#14716 is ready to merge.\n\n- **Merge state:** GitHub reports it as UNSTABLE, not CLEAN. The tool can't say why, so I can't tell whether it's a real problem.\n- **Checks:** The rollup is SUCCESS. Of 16 checks, 9 passed and 7 were skipped. None are failing or pending. That doesn't match an UNSTABLE state, so something else may be behind it.\n- **Review:** The PR is approved, though `reviewer-1` is still listed as a requested reviewer.\n- **Other:** The PR is open, not a draft, mergeable with no conflicts, and not in a merge queue.\n- **Head commit:** I checked `936921fa9e67cdbf78fb25abc6252afabafef056`. You didn't give me an expected commit, so I can't confirm it's the one you mean.\n\nTo resolve it, look at the PR page (https://github.com/cli/cli/pull/14716) to see what is making the merge state UNSTABLE. Then check again with the commit sha you expect.\n\nCLAIM: cannot verify\nNEXT: unknown",
+  "num_turns": 2,
+  "duration_ms": 6905,
+  "cost_usd": 0.0179155,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXb3zBHUGFETNeozzEr",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_019A9Cd2JsqjUPn8GXt5N5Sr",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "bbcbf7ed-ec81-4170-980d-e7c236c8cf6c",
+      "uuid": "95f8ff3e-3f0c-48ba-a324-da24e3f8e7c1",
+      "timestamp": "2026-10-22T15:40:31.470Z",
+      "request_id": "req_011CgHXb3ipEvDnnTJk2CNK6",
+      "wire_tool_inputs": {
+        "toolu_019A9Cd2JsqjUPn8GXt5N5Sr": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_019A9Cd2JsqjUPn8GXt5N5Sr",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_019A9Cd2JsqjUPn8GXt5N5Sr",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:31.487Z\",\"reasons\":[{\"code\":\"unsupported_merge_state\",\"owner\":\"unknown\",\"detail\":\"GitHub reports merge state UNSTABLE, which this tool cannot evaluate or attribute.\",\"fix\":\"Inspect the PR page: https://github.com/cli/cli/pull/14716. Not verified.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"UNSTABLE\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "bbcbf7ed-ec81-4170-980d-e7c236c8cf6c",
+      "uuid": "a821993c-967a-4f63-baff-2765e27e0e69",
+      "timestamp": "2026-10-22T15:40:31.490Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:31.487Z\",\"reasons\":[{\"code\":\"unsupported_merge_state\",\"owner\":\"unknown\",\"detail\":\"GitHub reports merge state UNSTABLE, which this tool cannot evaluate or attribute.\",\"fix\":\"Inspect the PR page: https://github.com/cli/cli/pull/14716. Not verified.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"UNSTABLE\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:40:31.487Z",
+          "reasons": [
+            {
+              "code": "unsupported_merge_state",
+              "owner": "unknown",
+              "detail": "GitHub reports merge state UNSTABLE, which this tool cannot evaluate or attribute.",
+              "fix": "Inspect the PR page: https://github.com/cli/cli/pull/14716. Not verified."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "UNSTABLE",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "APPROVED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": "SUCCESS",
+              "total": 16,
+              "listed": 16,
+              "details_complete": true,
+              "by_state": {
+                "SKIPPED": 7,
+                "SUCCESS": 9
+              },
+              "failing": [],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_019A9Cd2JsqjUPn8GXt5N5Sr",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXbCbbbjqA85u5mXkzo",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "thinking",
+            "thinking": "",
+            "signature": "CAQSlwYKEAgTGAI4AUIIdGhpbmtpbmcSDCB23rB+Shgip4f4ABoMWYLl707P99FumyYDIjBMZtPqpoaApd1WwC7/cEVkEqKOhic2MxVXmIn5J8ZrJQhbhTtK0iLiEcO7w0VdLAIqtAU+pkKwJ+nqdX4Z7Nnjgd6+EmxOxHXYpfYDj6JoLGyWe2tpw2Fg4ZnC2Zq11tVxEWM1XnfyH+oBk9hjQynosGUcDHw/3Tsy48OzCNvBM0B9PcGENYDoN8EJ4SzLF8a9ddSfd5VqalesmYYehwfHnRlGGyRmsBLlxlW4ppFre4f3cUtuZWmo9L9QaxBHpYx+mqsP5/YP6zvga2W6WLiLjfHUHxGnJ6K81YyrDS6jheaJRID4jp0OfZWkuYzKrwx24X6OeUZa1NvlEBTK9yfbfNArW+BRPsRDF56eBgXCoNB8RzTCjqOnVyQUuoXtF5orBsvsKGZd43UyJfu7iGqE7ouOqE1bCO62XFHZlVkYOzPT2qd5fA/96Zf0vAeg8osSKSbEg2stzJPmuneEMlIaZe2oNHNExxb1J/n0183M7AyJdnH4NDUPfYqoSLv1kLB17/irJ9hAeYznXTd3xBYcqPmSqMZTMDhGzJAvgub7d9h/RAiyv1w+Oa1tL4NLf6VYwSpcXjZcgLpyfefCwj1NmWWc/IcuJvTh6lCYrdG1tSoLhLSIs7ldBVLWwa2zQ2jgUVHk28YRcZxJ3frGY0Dfd+RSsGjQBF5QG3jXOloeP/r5hZ6WqY3m18+ybd3AVAc4/svz+8KtjmjJdyEKok6KMpPa5WR1vatiqM4o4cueOpUpHrv41jWD39D+YfdsEE31Vm5g/WpIvoG/lZ/Wug0LTp2PQLaKOGaoV5AXM8GvTEzye5zPhZMFX/k8cIWiBeMRXSoSlyYtDxLIQB4PP1HkXJiU76WrieJl2DOyou+5iM+L1tuYJ4gJ6u06je28g6eO1HP6R8xdYGtcgjtSSUjOQ321yYaPBPZieR0rQnwP+uOg96NmJxZGMntSz4yYNzPV5nfpoNArcNoHy6C0D83m3dsUA7avSxgB"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 461,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 461
+          },
+          "output_tokens": 6,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "bbcbf7ed-ec81-4170-980d-e7c236c8cf6c",
+      "uuid": "e79f9daa-a0c6-4584-85e7-034d4cd1714a",
+      "timestamp": "2026-10-22T15:40:36.390Z",
+      "request_id": "req_011CgHXbBuBkJnEEw5B9jThv",
+      "thinking_duration_ms": 3571,
+      "thinking_display": "updates"
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXbCbbbjqA85u5mXkzo",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't confirm that cli/cli#14716 is ready to merge.\n\n- **Merge state:** GitHub reports it as UNSTABLE, not CLEAN. The tool can't say why, so I can't tell whether it's a real problem.\n- **Checks:** The rollup is SUCCESS. Of 16 checks, 9 passed and 7 were skipped. None are failing or pending. That doesn't match an UNSTABLE state, so something else may be behind it.\n- **Review:** The PR is approved, though `reviewer-1` is still listed as a requested reviewer.\n- **Other:** The PR is open, not a draft, mergeable with no conflicts, and not in a merge queue.\n- **Head commit:** I checked `936921fa9e67cdbf78fb25abc6252afabafef056`. You didn't give me an expected commit, so I can't confirm it's the one you mean.\n\nTo resolve it, look at the PR page (https://github.com/cli/cli/pull/14716) to see what is making the merge state UNSTABLE. Then check again with the commit sha you expect.\n\nCLAIM: cannot verify\nNEXT: unknown"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 461,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 461
+          },
+          "output_tokens": 6,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "bbcbf7ed-ec81-4170-980d-e7c236c8cf6c",
+      "uuid": "3900b89e-916a-4edb-8bda-304b841d0a51",
+      "timestamp": "2026-10-22T15:40:36.401Z",
+      "request_id": "req_011CgHXbBuBkJnEEw5B9jThv"
+    }
+  ]
+}

@@ -1,0 +1,932 @@
+{
+  "source": "grafana/grafana#135726",
+  "observed_at": "2026-10-22T15:28:22.651Z",
+  "response": {
+    "data": {
+      "repository": {
+        "pullRequest": {
+          "url": "https://github.com/grafana/grafana/pull/135726",
+          "state": "OPEN",
+          "isDraft": false,
+          "mergeable": "MERGEABLE",
+          "mergeStateStatus": "BLOCKED",
+          "reviewDecision": "REVIEW_REQUIRED",
+          "isInMergeQueue": false,
+          "headRefOid": "b3ff1e500ee37347f6986d50653bcde83ad9404a",
+          "baseRefName": "main",
+          "reviewRequests": {
+            "nodes": [
+              {
+                "requestedReviewer": {
+                  "login": "reviewer-1"
+                }
+              },
+              {
+                "requestedReviewer": {
+                  "login": "reviewer-2"
+                }
+              }
+            ]
+          },
+          "commits": {
+            "nodes": [
+              {
+                "commit": {
+                  "oid": "b3ff1e500ee37347f6986d50653bcde83ad9404a",
+                  "statusCheckRollup": {
+                    "state": "FAILURE",
+                    "contexts": {
+                      "totalCount": 210,
+                      "checkRunCountsByState": [
+                        {
+                          "state": "ACTION_REQUIRED",
+                          "count": 0
+                        },
+                        {
+                          "state": "CANCELLED",
+                          "count": 0
+                        },
+                        {
+                          "state": "COMPLETED",
+                          "count": 0
+                        },
+                        {
+                          "state": "FAILURE",
+                          "count": 5
+                        },
+                        {
+                          "state": "IN_PROGRESS",
+                          "count": 7
+                        },
+                        {
+                          "state": "NEUTRAL",
+                          "count": 1
+                        },
+                        {
+                          "state": "PENDING",
+                          "count": 0
+                        },
+                        {
+                          "state": "QUEUED",
+                          "count": 0
+                        },
+                        {
+                          "state": "SKIPPED",
+                          "count": 16
+                        },
+                        {
+                          "state": "STALE",
+                          "count": 0
+                        },
+                        {
+                          "state": "STARTUP_FAILURE",
+                          "count": 0
+                        },
+                        {
+                          "state": "SUCCESS",
+                          "count": 177
+                        },
+                        {
+                          "state": "TIMED_OUT",
+                          "count": 0
+                        },
+                        {
+                          "state": "WAITING",
+                          "count": 0
+                        }
+                      ],
+                      "statusContextCountsByState": [
+                        {
+                          "state": "EXPECTED",
+                          "count": 0
+                        },
+                        {
+                          "state": "ERROR",
+                          "count": 0
+                        },
+                        {
+                          "state": "FAILURE",
+                          "count": 0
+                        },
+                        {
+                          "state": "PENDING",
+                          "count": 2
+                        },
+                        {
+                          "state": "SUCCESS",
+                          "count": 2
+                        }
+                      ],
+                      "nodes": [
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Capture PR metadata for handler",
+                          "status": "IN_PROGRESS",
+                          "conclusion": null,
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802298859/job/119906031111",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "IN_PROGRESS",
+                          "conclusion": null,
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301598/job/119906033764",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "signed-commits",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802297232/job/119907714099",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "update",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300960/job/119906102827",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "main",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802296316/job/119906022165",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301941/job/119906032704",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906033161",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/amd64",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906035121",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect frontend changes",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802299661/job/119906025909",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "codeowners-validator",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301074/job/119906029561",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Guard resource search result formats",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300964/job/119906031927",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "dispatch-job",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300823/job/119906028945",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "signed-commits",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300678/job/119906027429",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301053/job/119906031233",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "detect-changes",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300778/job/119906027994",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300594/job/119906027534",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301765/job/119906031881",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301219/job/119906032730",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "K8s Codegen Check",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301340/job/119906031523",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300898/job/119906029065",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "check-separation",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301559/job/119906028961",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "main",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300666/job/119906028261",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "main",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802297301/job/119906026523",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301302/job/119906030112",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "reject-gh-secrets",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302036/job/119906031806",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906033335",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "dashboard-schema-v2-e2e",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300183/job/119906027407",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Shellcheck scripts",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300797/job/119906028875",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300780/job/119906027569",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether the Docker image build is affected",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301739/job/119906032677",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "TruffleHog Secret Scan / trufflehog-scan",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302933/job/119906034364",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Trufflehog",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301971/job/119906033617",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "check-separation",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300375/job/119906027841",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "verify-i18n / verify-i18n",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802303168/job/119906036238",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Detect whether code changed",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301109/job/119906029573",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "govulncheck",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300793/job/119906028304",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Check whether there are things to scan",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802303529/job/119906034751",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/arm64",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034881",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/s390x",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906035097",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/armv6",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034997",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/armv7",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906035720",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "darwin/arm64",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906035123",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "darwin/amd64",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034988",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "windows/arm64",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906035310",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana (${{ matrix.shard }})",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119907606284",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "dispatch-job-fork",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300823/job/119906081106",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "check-endpoint-migration",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300778/job/119906401916",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Sqlite (${{ matrix.shard }})",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301598/job/119906086326",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Verify API clients",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300898/job/119906070616",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Validate Backend Configs",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301941/job/119906328499",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/amd64 (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034438",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Build base frontend",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802299661/job/119906332928",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Forbid new federated search requests",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300964/job/119906031609",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Build backend",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301053/job/119906325640",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Feature toggles documentation is in sync with source",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300594/job/119906325139",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Generate golden files",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301765/job/119906334216",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Go Workspace Check",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301219/job/119906325619",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "setup",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301302/job/119906320077",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (light theme)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330186",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Verify committed API specs match",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300780/job/119906309716",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build / full source (alpine)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301739/job/119906308949",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "TruffleHog Secret Scan / Send TruffleHog metrics to Prometheus via Grafana Bench",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302933/job/119906301478",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "go-fmt",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301109/job/119906334118",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run zizmor / Generate and upload zizmor results 🌈",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802303529/job/119906169950",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/arm64 (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906035455",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Build pr frontend",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802299661/job/119906332931",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (dark theme)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330353",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/s390x (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034872",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (deut_prot_light theme)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330193",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (deut_prot_dark theme)",
+                          "status": "IN_PROGRESS",
+                          "conclusion": null,
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330373",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/armv6 (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034718",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "linux/armv7 (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034790",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (tritanopia_light theme)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330369",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "darwin/arm64 (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034929",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (tritanopia_dark theme)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330387",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "darwin/amd64 (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034699",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (visual_refresh_dark theme)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330390",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run Storybook a11y tests (visual_refresh_light theme)",
+                          "status": "IN_PROGRESS",
+                          "conclusion": null,
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302282/job/119906330331",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "windows/arm64 (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906035086",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "MySQL (${{ matrix.shard }})",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301598/job/119906101236",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (1/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330843",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "verify rpm stig (linux/amd64)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301960/job/119906034231",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Check bundle size impact",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802299661/job/119908396049",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Build frontend",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301053/job/119906325958",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Decoupled plugin tests",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301765/job/119906334392",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Check Wire Changes",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301219/job/119906325522",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Verify API clients (enterprise)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300898/job/119906028270",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build frontend",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301302/job/119906436089",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build / frontend",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301739/job/119906308685",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "lint-go",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301109/job/119906334033",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Run zizmor / Send zizmor metrics to Prometheus via Grafana Bench",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802303529/job/119906586764",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (2/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330495",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (3/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330220",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (4/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330359",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (5/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330249",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (6/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330438",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (7/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330250",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Grafana Enterprise (8/8)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802302072/job/119906330604",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Postgres (${{ matrix.shard }})",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802301598/job/119907139192",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "Lint",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/grafana/grafana/actions/runs/39802300898/job/119907244427",
+                          "isRequired": false
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

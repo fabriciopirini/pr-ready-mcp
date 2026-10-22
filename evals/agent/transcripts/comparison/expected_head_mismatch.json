@@ -1,0 +1,465 @@
+{
+  "task": {
+    "name": "expected_head_mismatch",
+    "pr": "cli/cli#14716",
+    "expected_head_sha": "b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8",
+    "ask": "I just pushed b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 to cli/cli#14716. Is it ready now?"
+  },
+  "order": ["tool", "gh"],
+  "before": {
+    "observed_at": "2026-10-22T15:38:27.576Z",
+    "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+    "verdict": "not_ready",
+    "reasons": ["stale_head/author"],
+    "facts": {
+      "state": "OPEN",
+      "draft": false,
+      "merge_state": "CLEAN",
+      "mergeable": "MERGEABLE",
+      "review_decision": "APPROVED",
+      "in_merge_queue": false,
+      "rollup": "SUCCESS"
+    },
+    "by_state": {
+      "SKIPPED": 7,
+      "SUCCESS": 9
+    }
+  },
+  "after": {
+    "observed_at": "2026-10-22T15:38:52.920Z",
+    "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+    "verdict": "not_ready",
+    "reasons": ["stale_head/author"],
+    "facts": {
+      "state": "OPEN",
+      "draft": false,
+      "merge_state": "CLEAN",
+      "mergeable": "MERGEABLE",
+      "review_decision": "APPROVED",
+      "in_merge_queue": false,
+      "rollup": "SUCCESS"
+    },
+    "by_state": {
+      "SKIPPED": 7,
+      "SUCCESS": 9
+    }
+  },
+  "runs": [
+    {
+      "arm": "tool",
+      "prompt": "I just pushed b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 to cli/cli#14716. Is it ready now?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+      "started_at": "2026-10-22T15:38:27.577Z",
+      "finished_at": "2026-10-22T15:38:38.673Z",
+      "model": "claude-sonnet-5-5",
+      "final": "I can't verify that your push is ready yet. The PR head on GitHub is `936921fa9e67cdbf78fb25abc6252afabafef056`, not the `b7c6d5e4…b9c8` commit you pushed. Either your push hasn't landed, or someone else pushed after you.\n\nGitHub's state for the current head (`936921fa…`) looks fine:\n- The merge state is CLEAN.\n- The check rollup is SUCCESS: 9 checks passed, 7 were skipped, and none are failing or pending.\n- The PR is APPROVED.\n- It isn't in a merge queue.\n\nThose results belong to `936921fa…`, not to your commit, so they say nothing about `b7c6d5e4…`. Check whether your push reached the remote and whether someone else updated the branch. Don't force-push to make the heads match. Once the head is the one you expect, run the check again.\n\nCLAIM: cannot verify\nNEXT: author",
+      "num_turns": 2,
+      "duration_ms": 7307,
+      "cost_usd": 0.017414100000000002,
+      "claude_code_version": "2.1.308",
+      "tools": ["mcp__pr-ready__pr_readiness"],
+      "events": [
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXSKRcnXHsXnoNeFMgV",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_01KxJZRpP7mF4bVMU9zKvEfZ",
+                "name": "mcp__pr-ready__pr_readiness",
+                "input": {
+                  "pr": "cli/cli#14716",
+                  "expected_head_sha": "b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2523,
+              "cache_read_input_tokens": 1789,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2523
+              },
+              "output_tokens": 32,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "98485e45-5edc-48b8-8645-41b65a83db64",
+          "uuid": "4883da13-017d-489a-b776-1bf50d135631",
+          "timestamp": "2026-10-22T15:38:32.853Z",
+          "request_id": "req_011CgHXSKBjBR3hHSuME7gx7",
+          "wire_tool_inputs": {
+            "toolu_01KxJZRpP7mF4bVMU9zKvEfZ": {
+              "pr": "cli/cli#14716",
+              "expected_head_sha": "b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8"
+            }
+          },
+          "tool_use_meta": [
+            {
+              "id": "toolu_01KxJZRpP7mF4bVMU9zKvEfZ",
+              "display_name": "Pr Readiness",
+              "server_display_name": "pr-ready-mcp",
+              "tool_name": "pr_readiness"
+            }
+          ]
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "tool_use_id": "toolu_01KxJZRpP7mF4bVMU9zKvEfZ",
+                "type": "tool_result",
+                "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:38:34.037Z\",\"reasons\":[{\"code\":\"stale_head\",\"owner\":\"author\",\"detail\":\"The PR head is 936921fa9e67cdbf78fb25abc6252afabafef056, not the b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 you expected.\",\"fix\":\"Inspect both commits (did the push land, or did someone else push?). Do not push or force-push to make them match.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"niik\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}"
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "98485e45-5edc-48b8-8645-41b65a83db64",
+          "uuid": "348fad85-88a9-48e0-9607-51080bf7bcb3",
+          "timestamp": "2026-10-22T15:38:34.041Z",
+          "tool_use_result": {
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:38:34.037Z\",\"reasons\":[{\"code\":\"stale_head\",\"owner\":\"author\",\"detail\":\"The PR head is 936921fa9e67cdbf78fb25abc6252afabafef056, not the b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 you expected.\",\"fix\":\"Inspect both commits (did the push land, or did someone else push?). Do not push or force-push to make them match.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"niik\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}",
+            "structuredContent": {
+              "pr": "https://github.com/cli/cli/pull/14716",
+              "verdict": "not_ready",
+              "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+              "checked_at": "2026-10-22T15:38:34.037Z",
+              "reasons": [
+                {
+                  "code": "stale_head",
+                  "owner": "author",
+                  "detail": "The PR head is 936921fa9e67cdbf78fb25abc6252afabafef056, not the b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 you expected.",
+                  "fix": "Inspect both commits (did the push land, or did someone else push?). Do not push or force-push to make them match."
+                }
+              ],
+              "facts": {
+                "state": "OPEN",
+                "draft": false,
+                "base": "trunk",
+                "merge_state": "CLEAN",
+                "mergeable": "MERGEABLE",
+                "in_merge_queue": false,
+                "review_decision": "APPROVED",
+                "requested_reviewers": ["niik"],
+                "checks": {
+                  "rollup": "SUCCESS",
+                  "total": 16,
+                  "listed": 16,
+                  "details_complete": true,
+                  "by_state": {
+                    "SKIPPED": 7,
+                    "SUCCESS": 9
+                  },
+                  "failing": [],
+                  "pending": []
+                }
+              }
+            }
+          },
+          "tool_result_meta": [
+            {
+              "id": "toolu_01KxJZRpP7mF4bVMU9zKvEfZ",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "rule"
+              }
+            }
+          ]
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXSYAaw9WQjqFdf1gsJ",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "I can't verify that your push is ready yet. The PR head on GitHub is `936921fa9e67cdbf78fb25abc6252afabafef056`, not the `b7c6d5e4…b9c8` commit you pushed. Either your push hasn't landed, or someone else pushed after you.\n\nGitHub's state for the current head (`936921fa…`) looks fine:\n- The merge state is CLEAN.\n- The check rollup is SUCCESS: 9 checks passed, 7 were skipped, and none are failing or pending.\n- The PR is APPROVED.\n- It isn't in a merge queue.\n\nThose results belong to `936921fa…`, not to your commit, so they say nothing about `b7c6d5e4…`. Check whether your push reached the remote and whether someone else updated the branch. Don't force-push to make the heads match. Once the head is the one you expect, run the check again.\n\nCLAIM: cannot verify\nNEXT: author"
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 561,
+              "cache_read_input_tokens": 4312,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 561
+              },
+              "output_tokens": 312,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "98485e45-5edc-48b8-8645-41b65a83db64",
+          "uuid": "a718ae89-c4d0-418c-a08a-97d91bb5ab54",
+          "timestamp": "2026-10-22T15:38:38.359Z",
+          "request_id": "req_011CgHXSXqVABUbHrTB79qtV"
+        }
+      ]
+    },
+    {
+      "arm": "gh",
+      "prompt": "I just pushed b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 to cli/cli#14716. Is it ready now?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse only these read-only commands: `gh pr view <pr> --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup` and `gh pr checks <pr>`.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+      "started_at": "2026-10-22T15:38:38.675Z",
+      "finished_at": "2026-10-22T15:38:51.781Z",
+      "model": "claude-sonnet-5-5",
+      "final": "No, it isn't ready. The PR's head commit is `936921fa9e67…`, not the `b7c6d5e4f3a2…` you pushed. GitHub may not have picked up your push yet, or the push may have gone to a different branch.\n\nThe state of that other commit looks fine: the PR is open, not a draft, and approved. Merge state is CLEAN, and every check passed or was skipped. The checks ran on October 19, though, so they say nothing about your new commit. Your commit hasn't been checked, reviewed, or approved on this PR.\n\nI couldn't see whether the PR is in a merge queue, because the read-only commands I'm allowed to use don't show that. I wouldn't be able to confirm it even if the head matched.\n\nNext, check that your push reached the PR's branch. Once the PR head shows `b7c6d5e…`, wait for its checks to finish and ask me again.\n\nCLAIM: not ready\nNEXT: author",
+      "num_turns": 3,
+      "duration_ms": 9197,
+      "cost_usd": 0.0313052,
+      "claude_code_version": "2.1.308",
+      "tools": ["Bash"],
+      "events": [
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXT9MRQ162vjCADH7TH",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_01LdtbPAW4Be57YN2Fq8WLJu",
+                "name": "Bash",
+                "input": {
+                  "command": "gh pr view 14716 --repo cli/cli --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup",
+                  "description": "View PR status details"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2800,
+              "cache_read_input_tokens": 2136,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2800
+              },
+              "output_tokens": 16,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "c4671be5-4c98-4673-965e-ff754ccab623",
+          "uuid": "004d6d70-3087-4856-8633-691c03b988d9",
+          "timestamp": "2026-10-22T15:38:45.783Z",
+          "request_id": "req_011CgHXT92KtvHhzncxWTA1j",
+          "wire_tool_inputs": {
+            "toolu_01LdtbPAW4Be57YN2Fq8WLJu": {
+              "command": "gh pr view 14716 --repo cli/cli --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup",
+              "description": "View PR status details"
+            }
+          }
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXT9MRQ162vjCADH7TH",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "tool_use",
+                "id": "toolu_014J11NwcRFZrVYLvV4t8tpZ",
+                "name": "Bash",
+                "input": {
+                  "command": "gh pr checks 14716 --repo cli/cli",
+                  "description": "List PR check results"
+                },
+                "caller": {
+                  "type": "direct"
+                }
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 2800,
+              "cache_read_input_tokens": 2136,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 2800
+              },
+              "output_tokens": 16,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "c4671be5-4c98-4673-965e-ff754ccab623",
+          "uuid": "bb1fa3f2-95f6-45f0-8000-7a4befecac60",
+          "timestamp": "2026-10-22T15:38:45.793Z",
+          "request_id": "req_011CgHXT92KtvHhzncxWTA1j",
+          "wire_tool_inputs": {
+            "toolu_014J11NwcRFZrVYLvV4t8tpZ": {
+              "command": "gh pr checks 14716 --repo cli/cli",
+              "description": "List PR check results"
+            }
+          }
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "tool_use_id": "toolu_01LdtbPAW4Be57YN2Fq8WLJu",
+                "type": "tool_result",
+                "content": "{\"headRefOid\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"isDraft\":false,\"mergeStateStatus\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"reviewDecision\":\"APPROVED\",\"state\":\"OPEN\",\"statusCheckRollup\":[{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128887480\",\"name\":\"label-external\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:54:13Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694875/job/118128876438\",\"name\":\"CodeQL-Build (go, manual, ./.github/codeql/codeql-config.yml)\",\"startedAt\":\"2026-10-19T14:51:19Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Code Scanning\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:56:32Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877234\",\"name\":\"build (ubuntu-latest)\",\"startedAt\":\"2026-10-19T14:51:19Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:06Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694875/job/118128876935\",\"name\":\"CodeQL-Build (actions, none, security-and-quality)\",\"startedAt\":\"2026-10-19T14:51:19Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Code Scanning\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T15:01:21Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877056\",\"name\":\"build (windows-latest)\",\"startedAt\":\"2026-10-19T14:51:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:57:47Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877286\",\"name\":\"build (macos-latest)\",\"startedAt\":\"2026-10-19T14:51:24Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128887180\",\"name\":\"close-from-default-branch\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:55Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128876429\",\"name\":\"integration-tests (ubuntu-latest)\",\"startedAt\":\"2026-10-19T14:51:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:53:25Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877029\",\"name\":\"integration-tests (windows-latest)\",\"startedAt\":\"2026-10-19T14:51:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:24Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877341\",\"name\":\"integration-tests (macos-latest)\",\"startedAt\":\"2026-10-19T14:51:23Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128888357\",\"name\":\"check-requirements / check-requirements\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128963838\",\"name\":\"check-requirements / close-unmet-requirements\",\"startedAt\":\"2026-10-19T14:51:27Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128951905\",\"name\":\"close-unmet-requirements\",\"startedAt\":\"2026-10-19T14:51:25Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128886135\",\"name\":\"close-no-help-wanted\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128968155\",\"name\":\"ready-for-review\",\"startedAt\":\"2026-10-19T14:51:27Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:00Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/runs/118129227691\",\"name\":\"CodeQL\",\"startedAt\":\"2026-10-19T14:51:57Z\",\"status\":\"COMPLETED\",\"workflowName\":\"\"}]}",
+                "is_error": false
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "c4671be5-4c98-4673-965e-ff754ccab623",
+          "uuid": "abd195ad-df9c-4229-8310-3ada40f8ce80",
+          "timestamp": "2026-10-22T15:38:46.978Z",
+          "tool_use_result": {
+            "stdout": "{\"headRefOid\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"isDraft\":false,\"mergeStateStatus\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"reviewDecision\":\"APPROVED\",\"state\":\"OPEN\",\"statusCheckRollup\":[{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128887480\",\"name\":\"label-external\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:54:13Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694875/job/118128876438\",\"name\":\"CodeQL-Build (go, manual, ./.github/codeql/codeql-config.yml)\",\"startedAt\":\"2026-10-19T14:51:19Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Code Scanning\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:56:32Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877234\",\"name\":\"build (ubuntu-latest)\",\"startedAt\":\"2026-10-19T14:51:19Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:06Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694875/job/118128876935\",\"name\":\"CodeQL-Build (actions, none, security-and-quality)\",\"startedAt\":\"2026-10-19T14:51:19Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Code Scanning\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T15:01:21Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877056\",\"name\":\"build (windows-latest)\",\"startedAt\":\"2026-10-19T14:51:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:57:47Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877286\",\"name\":\"build (macos-latest)\",\"startedAt\":\"2026-10-19T14:51:24Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128887180\",\"name\":\"close-from-default-branch\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:55Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128876429\",\"name\":\"integration-tests (ubuntu-latest)\",\"startedAt\":\"2026-10-19T14:51:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:53:25Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877029\",\"name\":\"integration-tests (windows-latest)\",\"startedAt\":\"2026-10-19T14:51:20Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:24Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877341\",\"name\":\"integration-tests (macos-latest)\",\"startedAt\":\"2026-10-19T14:51:23Z\",\"status\":\"COMPLETED\",\"workflowName\":\"Unit and Integration Tests\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128888357\",\"name\":\"check-requirements / check-requirements\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128963838\",\"name\":\"check-requirements / close-unmet-requirements\",\"startedAt\":\"2026-10-19T14:51:27Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128951905\",\"name\":\"close-unmet-requirements\",\"startedAt\":\"2026-10-19T14:51:25Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128886135\",\"name\":\"close-no-help-wanted\",\"startedAt\":\"2026-10-19T14:51:18Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:51:17Z\",\"conclusion\":\"SKIPPED\",\"detailsUrl\":\"https://github.com/cli/cli/actions/runs/39272695107/job/118128968155\",\"name\":\"ready-for-review\",\"startedAt\":\"2026-10-19T14:51:27Z\",\"status\":\"COMPLETED\",\"workflowName\":\"PR Triaging\"},{\"__typename\":\"CheckRun\",\"completedAt\":\"2026-10-19T14:52:00Z\",\"conclusion\":\"SUCCESS\",\"detailsUrl\":\"https://github.com/cli/cli/runs/118129227691\",\"name\":\"CodeQL\",\"startedAt\":\"2026-10-19T14:51:57Z\",\"status\":\"COMPLETED\",\"workflowName\":\"\"}]}",
+            "stderr": "",
+            "interrupted": false,
+            "isImage": false,
+            "noOutputExpected": false
+          },
+          "tool_result_meta": [
+            {
+              "id": "toolu_01LdtbPAW4Be57YN2Fq8WLJu",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "subcommandResults"
+              }
+            }
+          ]
+        },
+        {
+          "type": "user",
+          "message": {
+            "role": "user",
+            "content": [
+              {
+                "tool_use_id": "toolu_014J11NwcRFZrVYLvV4t8tpZ",
+                "type": "tool_result",
+                "content": "CodeQL\tpass\t3s\thttps://github.com/cli/cli/runs/118129227691\t\nCodeQL-Build (actions, none, security-and-quality)\tpass\t47s\thttps://github.com/cli/cli/actions/runs/39272694875/job/118128876935\t\nCodeQL-Build (go, manual, ./.github/codeql/codeql-config.yml)\tpass\t2m54s\thttps://github.com/cli/cli/actions/runs/39272694875/job/118128876438\t\nbuild (macos-latest)\tpass\t6m23s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877286\t\nbuild (ubuntu-latest)\tpass\t5m13s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877234\t\nbuild (windows-latest)\tpass\t10m1s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877056\t\nintegration-tests (macos-latest)\tpass\t1m1s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877341\t\nintegration-tests (ubuntu-latest)\tpass\t1m35s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128876429\t\nintegration-tests (windows-latest)\tpass\t2m5s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877029\t\ncheck-requirements / check-requirements\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128888357\t\ncheck-requirements / close-unmet-requirements\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128963838\t\nclose-from-default-branch\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128887180\t\nclose-no-help-wanted\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128886135\t\nclose-unmet-requirements\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128951905\t\nlabel-external\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128887480\t\nready-for-review\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128968155",
+                "is_error": false
+              }
+            ]
+          },
+          "parent_tool_use_id": null,
+          "session_id": "c4671be5-4c98-4673-965e-ff754ccab623",
+          "uuid": "86c9ba4e-6513-4020-ad1e-692a15f250f5",
+          "timestamp": "2026-10-22T15:38:47.961Z",
+          "tool_use_result": {
+            "stdout": "CodeQL\tpass\t3s\thttps://github.com/cli/cli/runs/118129227691\t\nCodeQL-Build (actions, none, security-and-quality)\tpass\t47s\thttps://github.com/cli/cli/actions/runs/39272694875/job/118128876935\t\nCodeQL-Build (go, manual, ./.github/codeql/codeql-config.yml)\tpass\t2m54s\thttps://github.com/cli/cli/actions/runs/39272694875/job/118128876438\t\nbuild (macos-latest)\tpass\t6m23s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877286\t\nbuild (ubuntu-latest)\tpass\t5m13s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877234\t\nbuild (windows-latest)\tpass\t10m1s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877056\t\nintegration-tests (macos-latest)\tpass\t1m1s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877341\t\nintegration-tests (ubuntu-latest)\tpass\t1m35s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128876429\t\nintegration-tests (windows-latest)\tpass\t2m5s\thttps://github.com/cli/cli/actions/runs/39272694853/job/118128877029\t\ncheck-requirements / check-requirements\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128888357\t\ncheck-requirements / close-unmet-requirements\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128963838\t\nclose-from-default-branch\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128887180\t\nclose-no-help-wanted\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128886135\t\nclose-unmet-requirements\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128951905\t\nlabel-external\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128887480\t\nready-for-review\tskipping\t0\thttps://github.com/cli/cli/actions/runs/39272695107/job/118128968155",
+            "stderr": "",
+            "interrupted": false,
+            "isImage": false,
+            "noOutputExpected": false
+          },
+          "tool_result_meta": [
+            {
+              "id": "toolu_014J11NwcRFZrVYLvV4t8tpZ",
+              "permission_decision": {
+                "decision": "accept",
+                "source": "config",
+                "reason_type": "subcommandResults"
+              }
+            }
+          ]
+        },
+        {
+          "type": "assistant",
+          "message": {
+            "model": "claude-sonnet-5-5",
+            "id": "msg_011CgHXTZeQdxPd5hTZ8oGDF",
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "text",
+                "text": "No, it isn't ready. The PR's head commit is `936921fa9e67…`, not the `b7c6d5e4f3a2…` you pushed. GitHub may not have picked up your push yet, or the push may have gone to a different branch.\n\nThe state of that other commit looks fine: the PR is open, not a draft, and approved. Merge state is CLEAN, and every check passed or was skipped. The checks ran on October 19, though, so they say nothing about your new commit. Your commit hasn't been checked, reviewed, or approved on this PR.\n\nI couldn't see whether the PR is in a merge queue, because the read-only commands I'm allowed to use don't show that. I wouldn't be able to confirm it even if the head matched.\n\nNext, check that your push reached the PR's branch. Once the PR head shows `b7c6d5e…`, wait for its checks to finish and ask me again.\n\nCLAIM: not ready\nNEXT: author"
+              }
+            ],
+            "container": null,
+            "stop_reason": null,
+            "stop_sequence": null,
+            "stop_details": null,
+            "usage": {
+              "input_tokens": 2,
+              "cache_creation_input_tokens": 3535,
+              "cache_read_input_tokens": 4936,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 3535
+              },
+              "output_tokens": 307,
+              "service_tier": "standard",
+              "inference_geo": "global",
+              "speed": "standard"
+            },
+            "input_transformations": [],
+            "diagnostics": null,
+            "context_management": null
+          },
+          "parent_tool_use_id": null,
+          "session_id": "c4671be5-4c98-4673-965e-ff754ccab623",
+          "uuid": "9759372b-121b-4ef4-912b-58f61ef3101a",
+          "timestamp": "2026-10-22T15:38:51.435Z",
+          "request_id": "req_011CgHXTZHpszHkMKBWWMnAA"
+        }
+      ]
+    }
+  ]
+}

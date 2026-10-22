@@ -1,0 +1,194 @@
+{
+  "task": {
+    "name": "failing",
+    "scenario": "required_check_failing",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario required_check_failing",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:39:29.911Z",
+  "finished_at": "2026-10-22T15:39:42.611Z",
+  "model": "claude-sonnet-5-5",
+  "final": "No, cli/cli#14716 isn't ready to merge. I checked it at 2026-10-22 15:39 UTC, and the head commit was `936921fa9e67cdbf78fb25abc6252afabafef056`.\n\n- **Failing check:** `build (ubuntu-latest)` failed, and it is a required check. Of the 16 checks, 8 passed, 7 were skipped and 1 failed. The check rollup is FAILURE, and GitHub's merge state is BLOCKED rather than CLEAN.\n- **Logs:** The [failed job](https://github.com/cli/cli/actions/runs/39272694853/job/118128877234) is worth reading before assuming the code caused it, because it could be a flaky run.\n- **Other conditions:** The review decision is APPROVED, the PR isn't a draft and has no merge conflicts, and it isn't in a merge queue. `reviewer-1` is still listed as a requested reviewer.\n\nThe next step is the author's: fix the build failure or re-run the check until it passes.\n\nCLAIM: not ready\nNEXT: author",
+  "num_turns": 2,
+  "duration_ms": 8866,
+  "cost_usd": 0.0169755,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXWvGjKExxLU1tufZJQ",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01RyYXfEiEZSWRdidfgsZZK1",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "df7add45-38c9-4bcc-9997-1a3dca90d3a2",
+      "uuid": "ff418306-4936-4dcb-b8be-033c70151891",
+      "timestamp": "2026-10-22T15:39:35.320Z",
+      "request_id": "req_011CgHXWuu9d6tviq4KB9QX2",
+      "wire_tool_inputs": {
+        "toolu_01RyYXfEiEZSWRdidfgsZZK1": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01RyYXfEiEZSWRdidfgsZZK1",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_01RyYXfEiEZSWRdidfgsZZK1",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:39:35.348Z\",\"reasons\":[{\"code\":\"checks_failing\",\"owner\":\"author\",\"detail\":\"1 of 16 checks failed on the head commit; 16 of 16 listed by name.\",\"fix\":\"Open the URLs in facts.checks.failing and read the logs before assuming the code or the author caused it. A check marked required: false is not required by the repository; this tool still waits for it to pass or be re-run.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"FAILURE\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"FAILURE\":1,\"SKIPPED\":7,\"SUCCESS\":8},\"failing\":[{\"name\":\"build (ubuntu-latest)\",\"required\":true,\"url\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877234\"}],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "df7add45-38c9-4bcc-9997-1a3dca90d3a2",
+      "uuid": "fd34fa8d-1643-48c0-8db9-0a06bd719e79",
+      "timestamp": "2026-10-22T15:39:35.352Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:39:35.348Z\",\"reasons\":[{\"code\":\"checks_failing\",\"owner\":\"author\",\"detail\":\"1 of 16 checks failed on the head commit; 16 of 16 listed by name.\",\"fix\":\"Open the URLs in facts.checks.failing and read the logs before assuming the code or the author caused it. A check marked required: false is not required by the repository; this tool still waits for it to pass or be re-run.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"FAILURE\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"FAILURE\":1,\"SKIPPED\":7,\"SUCCESS\":8},\"failing\":[{\"name\":\"build (ubuntu-latest)\",\"required\":true,\"url\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877234\"}],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:39:35.348Z",
+          "reasons": [
+            {
+              "code": "checks_failing",
+              "owner": "author",
+              "detail": "1 of 16 checks failed on the head commit; 16 of 16 listed by name.",
+              "fix": "Open the URLs in facts.checks.failing and read the logs before assuming the code or the author caused it. A check marked required: false is not required by the repository; this tool still waits for it to pass or be re-run."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "BLOCKED",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "APPROVED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": "FAILURE",
+              "total": 16,
+              "listed": 16,
+              "details_complete": true,
+              "by_state": {
+                "FAILURE": 1,
+                "SKIPPED": 7,
+                "SUCCESS": 8
+              },
+              "failing": [
+                {
+                  "name": "build (ubuntu-latest)",
+                  "required": true,
+                  "url": "https://github.com/cli/cli/actions/runs/39272694853/job/118128877234"
+                }
+              ],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_01RyYXfEiEZSWRdidfgsZZK1",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXX49z2Ryn7hpYf9AzV",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "No, cli/cli#14716 isn't ready to merge. I checked it at 2026-10-22 15:39 UTC, and the head commit was `936921fa9e67cdbf78fb25abc6252afabafef056`.\n\n- **Failing check:** `build (ubuntu-latest)` failed, and it is a required check. Of the 16 checks, 8 passed, 7 were skipped and 1 failed. The check rollup is FAILURE, and GitHub's merge state is BLOCKED rather than CLEAN.\n- **Logs:** The [failed job](https://github.com/cli/cli/actions/runs/39272694853/job/118128877234) is worth reading before assuming the code caused it, because it could be a flaky run.\n- **Other conditions:** The review decision is APPROVED, the PR isn't a draft and has no merge conflicts, and it isn't in a merge queue. `reviewer-1` is still listed as a requested reviewer.\n\nThe next step is the author's: fix the build failure or re-run the check until it passes.\n\nCLAIM: not ready\nNEXT: author"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 546,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 546
+          },
+          "output_tokens": 359,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "df7add45-38c9-4bcc-9997-1a3dca90d3a2",
+      "uuid": "c1a115b6-f0dc-400d-9bce-4fe5d4c1966b",
+      "timestamp": "2026-10-22T15:39:42.324Z",
+      "request_id": "req_011CgHXX3tMsNH5NQemFzqQA"
+    }
+  ]
+}

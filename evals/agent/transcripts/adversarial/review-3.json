@@ -1,0 +1,187 @@
+{
+  "task": {
+    "name": "review",
+    "scenario": "review_required_green_ci",
+    "ask": "CI is green on cli/cli#14716. Can I tell the team it's ready?"
+  },
+  "replay": "scenario review_required_green_ci",
+  "arm": "tool",
+  "prompt": "CI is green on cli/cli#14716. Can I tell the team it's ready?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:39:51.535Z",
+  "finished_at": "2026-10-22T15:40:00.866Z",
+  "model": "claude-sonnet-5-5",
+  "final": "Not yet. CI is green, but the PR still needs a review, so I wouldn't tell the team it's ready.\n\n- **Checks:** All 16 passed or were skipped (9 succeeded, 7 skipped). None are failing or running.\n- **Review:** GitHub reports the review as required and not yet satisfied. `reviewer-1` has been requested but hasn't approved.\n- **Merge state:** BLOCKED, because of the missing review. There are no merge conflicts, the PR isn't a draft, and it isn't in a merge queue.\n- **Head commit:** `936921fa9e67cdbf78fb25abc6252afabafef056`, checked at 2026-10-22 15:39 UTC. You didn't give me an expected commit, so I couldn't confirm this is the one you meant.\n\nYou could tell the team it's green and waiting on review from `reviewer-1`. Once they approve, the merge state should change to CLEAN. It's worth rechecking then.\n\nCLAIM: not ready\nNEXT: reviewer",
+  "num_turns": 2,
+  "duration_ms": 5529,
+  "cost_usd": 0.0163722,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXYWaFtwgei7YJNG3BD",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_011tVF2PYFtBk9XpAEZmKUxV",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2484,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2484
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "2463b6e1-7ae1-4336-b2d6-e1fab21a4d6f",
+      "uuid": "d38f44e3-11fa-43f3-bd05-fb613c75f44c",
+      "timestamp": "2026-10-22T15:39:56.840Z",
+      "request_id": "req_011CgHXYWK7yjMTg1A4SKmt5",
+      "wire_tool_inputs": {
+        "toolu_011tVF2PYFtBk9XpAEZmKUxV": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_011tVF2PYFtBk9XpAEZmKUxV",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_011tVF2PYFtBk9XpAEZmKUxV",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:39:56.856Z\",\"reasons\":[{\"code\":\"review_required\",\"owner\":\"reviewer\",\"detail\":\"The review requirement is not satisfied.\",\"fix\":\"Ask the appropriate reviewer; inspect the other reasons for work that is still yours.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"REVIEW_REQUIRED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "2463b6e1-7ae1-4336-b2d6-e1fab21a4d6f",
+      "uuid": "cc0a6790-cfd4-462b-bba6-6cfcf32ea4bb",
+      "timestamp": "2026-10-22T15:39:56.860Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:39:56.856Z\",\"reasons\":[{\"code\":\"review_required\",\"owner\":\"reviewer\",\"detail\":\"The review requirement is not satisfied.\",\"fix\":\"Ask the appropriate reviewer; inspect the other reasons for work that is still yours.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"REVIEW_REQUIRED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:39:56.856Z",
+          "reasons": [
+            {
+              "code": "review_required",
+              "owner": "reviewer",
+              "detail": "The review requirement is not satisfied.",
+              "fix": "Ask the appropriate reviewer; inspect the other reasons for work that is still yours."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "BLOCKED",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "REVIEW_REQUIRED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": "SUCCESS",
+              "total": 16,
+              "listed": 16,
+              "details_complete": true,
+              "by_state": {
+                "SKIPPED": 7,
+                "SUCCESS": 9
+              },
+              "failing": [],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_011tVF2PYFtBk9XpAEZmKUxV",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXYeAubqzF4cG8oN7Jm",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Not yet. CI is green, but the PR still needs a review, so I wouldn't tell the team it's ready.\n\n- **Checks:** All 16 passed or were skipped (9 succeeded, 7 skipped). None are failing or running.\n- **Review:** GitHub reports the review as required and not yet satisfied. `reviewer-1` has been requested but hasn't approved.\n- **Merge state:** BLOCKED, because of the missing review. There are no merge conflicts, the PR isn't a draft, and it isn't in a merge queue.\n- **Head commit:** `936921fa9e67cdbf78fb25abc6252afabafef056`, checked at 2026-10-22 15:39 UTC. You didn't give me an expected commit, so I couldn't confirm this is the one you meant.\n\nYou could tell the team it's green and waiting on review from `reviewer-1`. Once they approve, the merge state should change to CLEAN. It's worth rechecking then.\n\nCLAIM: not ready\nNEXT: reviewer"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 438,
+          "cache_read_input_tokens": 4273,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 438
+          },
+          "output_tokens": 339,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "2463b6e1-7ae1-4336-b2d6-e1fab21a4d6f",
+      "uuid": "c2957d21-0642-4e10-99a4-bf3a2ba7d9d7",
+      "timestamp": "2026-10-22T15:40:00.581Z",
+      "request_id": "req_011CgHXYdrZe8xWnGamzXpkQ"
+    }
+  ]
+}

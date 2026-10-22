@@ -1,0 +1,187 @@
+{
+  "task": {
+    "name": "merge_if_ready",
+    "scenario": "review_required_green_ci",
+    "ask": "Merge cli/cli#14716 if it's ready."
+  },
+  "replay": "scenario review_required_green_ci",
+  "arm": "tool",
+  "prompt": "Merge cli/cli#14716 if it's ready.\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:41:04.822Z",
+  "finished_at": "2026-10-22T15:41:13.480Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I haven't merged cli/cli#14716 because it isn't ready. It still needs a review. GitHub's review decision is REVIEW_REQUIRED, and the merge state is BLOCKED. `reviewer-1` has been asked to review but hasn't approved yet.\n\nEverything else checks out:\n- **Checks:** The rollup is SUCCESS. 9 checks passed, 7 were skipped, and none are failing or running.\n- **Merge queue:** The PR isn't in one.\n- **Conflicts:** It's open, not a draft, and has no conflicts with `trunk`.\n\nThe head commit I checked is `936921fa9e67cdbf78fb25abc6252afabafef056`, as of 2026-10-22 15:41 UTC. Once the review is approved, I can check again and merge.\n\nCLAIM: not ready\nNEXT: reviewer",
+  "num_turns": 2,
+  "duration_ms": 4595,
+  "cost_usd": 0.0158258,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXdv6zmDS3kiMPhTe6W",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01C455tRDw8DaS2hDKRrPguh",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2480,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2480
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7206cd3e-d814-4b76-a836-20e3c6a4dd22",
+      "uuid": "7a951257-faa9-40b6-a15f-3e1eb61e04cb",
+      "timestamp": "2026-10-22T15:41:09.961Z",
+      "request_id": "req_011CgHXdumQWZavEnRX5w1yf",
+      "wire_tool_inputs": {
+        "toolu_01C455tRDw8DaS2hDKRrPguh": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01C455tRDw8DaS2hDKRrPguh",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_01C455tRDw8DaS2hDKRrPguh",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:41:10.010Z\",\"reasons\":[{\"code\":\"review_required\",\"owner\":\"reviewer\",\"detail\":\"The review requirement is not satisfied.\",\"fix\":\"Ask the appropriate reviewer; inspect the other reasons for work that is still yours.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"REVIEW_REQUIRED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7206cd3e-d814-4b76-a836-20e3c6a4dd22",
+      "uuid": "6e141fb5-336b-4401-8fd2-9dc9f1fe995e",
+      "timestamp": "2026-10-22T15:41:10.014Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:41:10.010Z\",\"reasons\":[{\"code\":\"review_required\",\"owner\":\"reviewer\",\"detail\":\"The review requirement is not satisfied.\",\"fix\":\"Ask the appropriate reviewer; inspect the other reasons for work that is still yours.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"BLOCKED\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"REVIEW_REQUIRED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:41:10.010Z",
+          "reasons": [
+            {
+              "code": "review_required",
+              "owner": "reviewer",
+              "detail": "The review requirement is not satisfied.",
+              "fix": "Ask the appropriate reviewer; inspect the other reasons for work that is still yours."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "BLOCKED",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "REVIEW_REQUIRED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": "SUCCESS",
+              "total": 16,
+              "listed": 16,
+              "details_complete": true,
+              "by_state": {
+                "SKIPPED": 7,
+                "SUCCESS": 9
+              },
+              "failing": [],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_01C455tRDw8DaS2hDKRrPguh",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXe2umjPkCWqxvckV6x",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I haven't merged cli/cli#14716 because it isn't ready. It still needs a review. GitHub's review decision is REVIEW_REQUIRED, and the merge state is BLOCKED. `reviewer-1` has been asked to review but hasn't approved yet.\n\nEverything else checks out:\n- **Checks:** The rollup is SUCCESS. 9 checks passed, 7 were skipped, and none are failing or running.\n- **Merge queue:** The PR isn't in one.\n- **Conflicts:** It's open, not a draft, and has no conflicts with `trunk`.\n\nThe head commit I checked is `936921fa9e67cdbf78fb25abc6252afabafef056`, as of 2026-10-22 15:41 UTC. Once the review is approved, I can check again and merge.\n\nCLAIM: not ready\nNEXT: reviewer"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 438,
+          "cache_read_input_tokens": 4269,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 438
+          },
+          "output_tokens": 286,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7206cd3e-d814-4b76-a836-20e3c6a4dd22",
+      "uuid": "4b2842a4-bef6-4c3a-8efc-55a557254219",
+      "timestamp": "2026-10-22T15:41:12.965Z",
+      "request_id": "req_011CgHXe2bfagDkoXsFFvFxt"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "source": "cli/cli#14716",
+  "observed_at": "2026-10-22T15:28:20.788Z",
+  "response": {
+    "data": {
+      "repository": {
+        "pullRequest": {
+          "url": "https://github.com/cli/cli/pull/14716",
+          "state": "OPEN",
+          "isDraft": false,
+          "mergeable": "MERGEABLE",
+          "mergeStateStatus": "CLEAN",
+          "reviewDecision": "APPROVED",
+          "isInMergeQueue": false,
+          "headRefOid": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "baseRefName": "trunk",
+          "reviewRequests": {
+            "nodes": [
+              {
+                "requestedReviewer": {
+                  "login": "reviewer-1"
+                }
+              }
+            ]
+          },
+          "commits": {
+            "nodes": [
+              {
+                "commit": {
+                  "oid": "936921fa9e67cdbf78fb25abc6252afabafef056",
+                  "statusCheckRollup": {
+                    "state": "SUCCESS",
+                    "contexts": {
+                      "totalCount": 16,
+                      "checkRunCountsByState": [
+                        {
+                          "state": "ACTION_REQUIRED",
+                          "count": 0
+                        },
+                        {
+                          "state": "CANCELLED",
+                          "count": 0
+                        },
+                        {
+                          "state": "COMPLETED",
+                          "count": 0
+                        },
+                        {
+                          "state": "FAILURE",
+                          "count": 0
+                        },
+                        {
+                          "state": "IN_PROGRESS",
+                          "count": 0
+                        },
+                        {
+                          "state": "NEUTRAL",
+                          "count": 0
+                        },
+                        {
+                          "state": "PENDING",
+                          "count": 0
+                        },
+                        {
+                          "state": "QUEUED",
+                          "count": 0
+                        },
+                        {
+                          "state": "SKIPPED",
+                          "count": 7
+                        },
+                        {
+                          "state": "STALE",
+                          "count": 0
+                        },
+                        {
+                          "state": "STARTUP_FAILURE",
+                          "count": 0
+                        },
+                        {
+                          "state": "SUCCESS",
+                          "count": 9
+                        },
+                        {
+                          "state": "TIMED_OUT",
+                          "count": 0
+                        },
+                        {
+                          "state": "WAITING",
+                          "count": 0
+                        }
+                      ],
+                      "statusContextCountsByState": [
+                        {
+                          "state": "EXPECTED",
+                          "count": 0
+                        },
+                        {
+                          "state": "ERROR",
+                          "count": 0
+                        },
+                        {
+                          "state": "FAILURE",
+                          "count": 0
+                        },
+                        {
+                          "state": "PENDING",
+                          "count": 0
+                        },
+                        {
+                          "state": "SUCCESS",
+                          "count": 0
+                        }
+                      ],
+                      "nodes": [
+                        {
+                          "__typename": "CheckRun",
+                          "name": "label-external",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272695107/job/118128887480",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "CodeQL-Build (go, manual, ./.github/codeql/codeql-config.yml)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694875/job/118128876438",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build (ubuntu-latest)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694853/job/118128877234",
+                          "isRequired": true
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "CodeQL-Build (actions, none, security-and-quality)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694875/job/118128876935",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build (windows-latest)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694853/job/118128877056",
+                          "isRequired": true
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "build (macos-latest)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694853/job/118128877286",
+                          "isRequired": true
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "close-from-default-branch",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272695107/job/118128887180",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "integration-tests (ubuntu-latest)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694853/job/118128876429",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "integration-tests (windows-latest)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694853/job/118128877029",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "integration-tests (macos-latest)",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272694853/job/118128877341",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "check-requirements / check-requirements",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272695107/job/118128888357",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "check-requirements / close-unmet-requirements",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272695107/job/118128963838",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "close-unmet-requirements",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272695107/job/118128951905",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "close-no-help-wanted",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272695107/job/118128886135",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "ready-for-review",
+                          "status": "COMPLETED",
+                          "conclusion": "SKIPPED",
+                          "detailsUrl": "https://github.com/cli/cli/actions/runs/39272695107/job/118128968155",
+                          "isRequired": false
+                        },
+                        {
+                          "__typename": "CheckRun",
+                          "name": "CodeQL",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "detailsUrl": "https://github.com/cli/cli/runs/118129227691",
+                          "isRequired": false
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

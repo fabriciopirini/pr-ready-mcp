@@ -1,0 +1,189 @@
+{
+  "task": {
+    "name": "stale_identity",
+    "scenario": "clean",
+    "ask": "I just pushed b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 to cli/cli#14716. Is it ready now?"
+  },
+  "replay": "scenario clean",
+  "arm": "tool",
+  "prompt": "I just pushed b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 to cli/cli#14716. Is it ready now?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:40:00.867Z",
+  "finished_at": "2026-10-22T15:40:10.113Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I can't confirm readiness for your push yet. The PR head on GitHub is `936921fa9e67cdbf78fb25abc6252afabafef056`, not `b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8`.\n\nEither your push didn't land, or someone else pushed after you. The checks I read belong to that other commit, so they say nothing about yours.\n\nFor what it's worth, the commit that is the head looks fine:\n- The merge state is CLEAN.\n- The check rollup is SUCCESS (9 passed, 7 skipped, none failing or pending).\n- The review decision is APPROVED.\n- The PR isn't in a merge queue.\n\nCompare the two commits and check that your push went through. Don't force-push to make them match. Once the head is the commit you expect, I can re-check.\n\nCLAIM: cannot verify\nNEXT: author",
+  "num_turns": 2,
+  "duration_ms": 5237,
+  "cost_usd": 0.017318300000000002,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXZCwdi7b1RXK74JgfW",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01P7w5HBQ81wjBE6JvkK7g5i",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716",
+              "expected_head_sha": "b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2525,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2525
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "5f93806d-15f4-4bbf-b302-9936fdffe52a",
+      "uuid": "eeb742e2-99dc-4517-88b4-4d4f01383dac",
+      "timestamp": "2026-10-22T15:40:06.286Z",
+      "request_id": "req_011CgHXZCaZfFjeqipq4g9XB",
+      "wire_tool_inputs": {
+        "toolu_01P7w5HBQ81wjBE6JvkK7g5i": {
+          "pr": "cli/cli#14716",
+          "expected_head_sha": "b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01P7w5HBQ81wjBE6JvkK7g5i",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_01P7w5HBQ81wjBE6JvkK7g5i",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:06.333Z\",\"reasons\":[{\"code\":\"stale_head\",\"owner\":\"author\",\"detail\":\"The PR head is 936921fa9e67cdbf78fb25abc6252afabafef056, not the b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 you expected.\",\"fix\":\"Inspect both commits (did the push land, or did someone else push?). Do not push or force-push to make them match.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "5f93806d-15f4-4bbf-b302-9936fdffe52a",
+      "uuid": "13ca8293-6be9-4d3a-b797-ef36a6064f05",
+      "timestamp": "2026-10-22T15:40:06.337Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:06.333Z\",\"reasons\":[{\"code\":\"stale_head\",\"owner\":\"author\",\"detail\":\"The PR head is 936921fa9e67cdbf78fb25abc6252afabafef056, not the b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 you expected.\",\"fix\":\"Inspect both commits (did the push land, or did someone else push?). Do not push or force-push to make them match.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"SUCCESS\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"SKIPPED\":7,\"SUCCESS\":9},\"failing\":[],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:40:06.333Z",
+          "reasons": [
+            {
+              "code": "stale_head",
+              "owner": "author",
+              "detail": "The PR head is 936921fa9e67cdbf78fb25abc6252afabafef056, not the b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 you expected.",
+              "fix": "Inspect both commits (did the push land, or did someone else push?). Do not push or force-push to make them match."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "CLEAN",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "APPROVED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": "SUCCESS",
+              "total": 16,
+              "listed": 16,
+              "details_complete": true,
+              "by_state": {
+                "SKIPPED": 7,
+                "SUCCESS": 9
+              },
+              "failing": [],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_01P7w5HBQ81wjBE6JvkK7g5i",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXZLhxHTy4aLPzn779X",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't confirm readiness for your push yet. The PR head on GitHub is `936921fa9e67cdbf78fb25abc6252afabafef056`, not `b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8`.\n\nEither your push didn't land, or someone else pushed after you. The checks I read belong to that other commit, so they say nothing about yours.\n\nFor what it's worth, the commit that is the head looks fine:\n- The merge state is CLEAN.\n- The check rollup is SUCCESS (9 passed, 7 skipped, none failing or pending).\n- The review decision is APPROVED.\n- The PR isn't in a merge queue.\n\nCompare the two commits and check that your push went through. Don't force-push to make them match. Once the head is the commit you expect, I can re-check.\n\nCLAIM: cannot verify\nNEXT: author"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 565,
+          "cache_read_input_tokens": 4314,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 565
+          },
+          "output_tokens": 300,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "5f93806d-15f4-4bbf-b302-9936fdffe52a",
+      "uuid": "1de87d73-8b4a-496b-a1bf-92c6791d02de",
+      "timestamp": "2026-10-22T15:40:09.718Z",
+      "request_id": "req_011CgHXZLP7kZMhzABEgeyZv"
+    }
+  ]
+}

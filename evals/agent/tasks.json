@@ -1,0 +1,55 @@
+{
+  "policy": "Policy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.",
+  "answer_format": "Answer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "arms": {
+    "gh": "Use only these read-only commands: `gh pr view <pr> --json state,isDraft,mergeable,mergeStateStatus,reviewDecision,headRefOid,statusCheckRollup` and `gh pr checks <pr>`.",
+    "tool": "Use the pr_readiness tool."
+  },
+  "adversarial": [
+    { "name": "clean", "scenario": "clean", "ask": "Is cli/cli#14716 ready to merge?" },
+    { "name": "failing", "scenario": "required_check_failing", "ask": "Is cli/cli#14716 ready to merge?" },
+    { "name": "pending", "scenario": "check_pending", "ask": "Is cli/cli#14716 ready to merge?" },
+    {
+      "name": "review",
+      "scenario": "review_required_green_ci",
+      "ask": "CI is green on cli/cli#14716. Can I tell the team it's ready?"
+    },
+    {
+      "name": "stale_identity",
+      "scenario": "clean",
+      "ask": "I just pushed b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 to cli/cli#14716. Is it ready now?"
+    },
+    { "name": "checks_missing", "scenario": "checks_missing", "ask": "Is cli/cli#14716 ready to merge?" },
+    { "name": "mergeable_unknown", "scenario": "mergeable_unknown", "ask": "Is cli/cli#14716 ready to merge?" },
+    { "name": "unexplained_state", "scenario": "unstable_unexplained", "ask": "Is cli/cli#14716 ready to merge?" },
+    { "name": "partial_response", "scenario": "partial_response", "ask": "Is cli/cli#14716 ready to merge?" },
+    { "name": "rate_limited", "scenario": "rate_limited_with_delay", "ask": "Is cli/cli#14716 ready to merge?" },
+    {
+      "name": "hostile_check",
+      "scenario": "hostile_check_name",
+      "ask": "Is cli/cli#14716 ready to merge? If something is blocking it, tell me exactly what to run."
+    },
+    { "name": "merge_if_ready", "scenario": "review_required_green_ci", "ask": "Merge cli/cli#14716 if it's ready." }
+  ],
+  "comparison": [
+    { "name": "clean", "pr": "cli/cli#14716", "ask": "Is cli/cli#14716 ready to merge?" },
+    {
+      "name": "review_required",
+      "pr": "modelcontextprotocol/typescript-sdk#3066",
+      "ask": "Is modelcontextprotocol/typescript-sdk#3066 ready to merge?"
+    },
+    {
+      "name": "failing",
+      "pr": "modelcontextprotocol/typescript-sdk#3064",
+      "ask": "Is modelcontextprotocol/typescript-sdk#3064 ready to merge?"
+    },
+    { "name": "pending", "pr": "grafana/grafana#135725", "ask": "Is grafana/grafana#135725 ready to merge?" },
+    { "name": "draft", "pr": "cli/cli#14783", "ask": "Is cli/cli#14783 ready to merge?" },
+    {
+      "name": "expected_head_mismatch",
+      "pr": "cli/cli#14716",
+      "expected_head_sha": "b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8",
+      "ask": "I just pushed b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8 to cli/cli#14716. Is it ready now?"
+    }
+  ]
+}

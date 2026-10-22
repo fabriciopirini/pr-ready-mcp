@@ -1,0 +1,184 @@
+{
+  "task": {
+    "name": "checks_missing",
+    "scenario": "checks_missing",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario checks_missing",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:40:07.610Z",
+  "finished_at": "2026-10-22T15:40:16.398Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I can't verify yet that cli/cli#14716 is ready to merge.\n\nMost of the signals look good. The PR is open and not a draft, and GitHub's merge state is CLEAN and MERGEABLE. It is approved and isn't in a merge queue.\n\nThe problem is that no checks have reported on the head commit (936921fa9e67cdbf78fb25abc6252afabafef056), so the check rollup is empty. Your policy requires that rollup to be SUCCESS, and with no checks I can't confirm it. Checks usually show up within a minute of a push, so they may just not have started. If they still don't appear after a few minutes, something may be wrong with CI on this PR. I also didn't pass an expected head SHA, so I haven't confirmed this is the commit you expect.\n\nCheck again shortly. If you give me the SHA you expect, I can confirm the head matches too.\n\nCLAIM: cannot verify\nNEXT: wait",
+  "num_turns": 2,
+  "duration_ms": 4764,
+  "cost_usd": 0.0160215,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXZhGUXrUdMM8jPD4MS",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01RAGyi5bW3qLLpgcpJEapPF",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "855f24dd-b7f0-4205-9097-ce5cc8afdf1f",
+      "uuid": "2cf036aa-60a5-42b6-8b98-94c53b1a6af2",
+      "timestamp": "2026-10-22T15:40:12.466Z",
+      "request_id": "req_011CgHXZgyr3QDoQN1dDt21X",
+      "wire_tool_inputs": {
+        "toolu_01RAGyi5bW3qLLpgcpJEapPF": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01RAGyi5bW3qLLpgcpJEapPF",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_01RAGyi5bW3qLLpgcpJEapPF",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:12.513Z\",\"reasons\":[{\"code\":\"checks_missing\",\"owner\":\"wait\",\"detail\":\"No check has reported on the head commit.\",\"fix\":\"After a push, checks usually appear within a minute; call pr_readiness again. If the repository has no CI, this tool cannot verify readiness; facts.merge_state is GitHub's own aggregate.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":null,\"total\":0,\"listed\":0,\"details_complete\":true,\"by_state\":{},\"failing\":[],\"pending\":[]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "855f24dd-b7f0-4205-9097-ce5cc8afdf1f",
+      "uuid": "1b1bb6ee-f2c4-48e0-988e-ecc84a055d06",
+      "timestamp": "2026-10-22T15:40:12.518Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:40:12.513Z\",\"reasons\":[{\"code\":\"checks_missing\",\"owner\":\"wait\",\"detail\":\"No check has reported on the head commit.\",\"fix\":\"After a push, checks usually appear within a minute; call pr_readiness again. If the repository has no CI, this tool cannot verify readiness; facts.merge_state is GitHub's own aggregate.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":null,\"total\":0,\"listed\":0,\"details_complete\":true,\"by_state\":{},\"failing\":[],\"pending\":[]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:40:12.513Z",
+          "reasons": [
+            {
+              "code": "checks_missing",
+              "owner": "wait",
+              "detail": "No check has reported on the head commit.",
+              "fix": "After a push, checks usually appear within a minute; call pr_readiness again. If the repository has no CI, this tool cannot verify readiness; facts.merge_state is GitHub's own aggregate."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "CLEAN",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "APPROVED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": null,
+              "total": 0,
+              "listed": 0,
+              "details_complete": true,
+              "by_state": {},
+              "failing": [],
+              "pending": []
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_01RAGyi5bW3qLLpgcpJEapPF",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXZo3ydaGgj6HzPK6g4",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't verify yet that cli/cli#14716 is ready to merge.\n\nMost of the signals look good. The PR is open and not a draft, and GitHub's merge state is CLEAN and MERGEABLE. It is approved and isn't in a merge queue.\n\nThe problem is that no checks have reported on the head commit (936921fa9e67cdbf78fb25abc6252afabafef056), so the check rollup is empty. Your policy requires that rollup to be SUCCESS, and with no checks I can't confirm it. Checks usually show up within a minute of a push, so they may just not have started. If they still don't appear after a few minutes, something may be wrong with CI on this PR. I also didn't pass an expected head SHA, so I haven't confirmed this is the commit you expect.\n\nCheck again shortly. If you give me the SHA you expect, I can confirm the head matches too.\n\nCLAIM: cannot verify\nNEXT: wait"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 440,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 440
+          },
+          "output_tokens": 306,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "855f24dd-b7f0-4205-9097-ce5cc8afdf1f",
+      "uuid": "368b7f99-4a34-42c7-b2a0-98641e8b0568",
+      "timestamp": "2026-10-22T15:40:15.889Z",
+      "request_id": "req_011CgHXZnmcrH2gUW1NxjhEe"
+    }
+  ]
+}

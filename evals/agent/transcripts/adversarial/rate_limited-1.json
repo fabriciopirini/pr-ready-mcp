@@ -1,0 +1,282 @@
+{
+  "task": {
+    "name": "rate_limited",
+    "scenario": "rate_limited_with_delay",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario rate_limited_with_delay",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:40:41.061Z",
+  "finished_at": "2026-10-22T15:40:49.950Z",
+  "model": "claude-sonnet-5-5",
+  "final": "I can't tell yet whether cli/cli#14716 is ready to merge. The readiness check failed twice because GitHub's rate limit was hit, and it asked for a retry after 60 seconds. I have no merge state, check results, review status, queue status or head commit for this PR, so I'm not calling it ready. Retrying after the 60-second wait should work.\n\nCLAIM: cannot verify\nNEXT: wait",
+  "num_turns": 3,
+  "duration_ms": 5094,
+  "cost_usd": 0.0153355,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXcASeL7PASV5rich6E",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01XD4anLhkcTpXAZNSfVttsj",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7c32a0e8-f259-4ce9-87c2-6f076636921e",
+      "uuid": "c36ad5f4-40bb-4a3e-812b-8121d706ea34",
+      "timestamp": "2026-10-22T15:40:46.033Z",
+      "request_id": "req_011CgHXcA7JYZAZGwyxygphc",
+      "wire_tool_inputs": {
+        "toolu_01XD4anLhkcTpXAZNSfVttsj": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01XD4anLhkcTpXAZNSfVttsj",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "tool_result",
+            "content": "{\"code\":\"rate_limited\",\"message\":\"GitHub rate limit reached; retry in 60s.\",\"retryable\":true,\"retry_after_seconds\":60}",
+            "is_error": true,
+            "tool_use_id": "toolu_01XD4anLhkcTpXAZNSfVttsj"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7c32a0e8-f259-4ce9-87c2-6f076636921e",
+      "uuid": "4818d5df-5c8f-41af-9c6d-ceac51fc2170",
+      "timestamp": "2026-10-22T15:40:46.050Z",
+      "tool_use_result": "Error: {\"code\":\"rate_limited\",\"message\":\"GitHub rate limit reached; retry in 60s.\",\"retryable\":true,\"retry_after_seconds\":60}",
+      "tool_result_meta": [
+        {
+          "id": "toolu_01XD4anLhkcTpXAZNSfVttsj",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXcHrPtge2m5jo1fWGC",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "thinking",
+            "thinking": "",
+            "signature": "CAQS4AQKEAgTGAI4AUIIdGhpbmtpbmcSDIFZpeHBQsieTrxlfRoMGRWH3QsudUM92oQoIjBxedD68rhr79Gt4HpJK1XdvTKy/J6Dpja8pOQivgFrVGR7QCEAi6lofyvNECV1pgUq/QN87qQiy67HtS6MipoNf3sbZiOe6WbKLlSa1qJ+tuLTKHSZoK2etqgRqL4xsSPYgRaOaA9Kx98UnFivAGSEwGKLVcaziwySkwAXVwNlOH10ErtRL4/RmfgLrwBJTE6W23EmKqP9uOuMZEpRNI3dkM6VEqPGUbMT+tSXVQJHCAVl5fDRXbnISZMfOk8rmtMdsvCWKL9Du9jw7pkyzLs2I9P5QOgL2XSbYBTS+ydMiMzpeHvgqyuwWfXBzTaS8gASaFm1PfMAYAL+x/Ely4bh8ZsafYDj+N4weeq96SZsYgxUMAnrbOAnrhbEHK66WnJjoaGTaLNvuzjOZZVRGVgOQGq7RJValOJJat5SzvS8OzdniWhZWhkrPS1GyyIfLm8MZpCtUpR77zL6fPNirbRVaY+PKXu9w4rX6+Bw8Aauj4s/rcJovm2qgtsDC55thFszIFz10FNmxsQChk449u0e+CLFCKob2/Ld6RJcd+3TEp/BCgL6A0+3UStI06fZdeskvO6z0t8CdpUuDRw0yGrsrb0cd4AhsQdVUG8yX+bcx4uLhvzLlHBduxIiTtXdOSkSXI7b9VtGC4XWods6AXbR4PXLYOr2XLPdJsE5WZzNaqBgovHBC9K1UeFCUobhW7F2J9vAGivrN3rQ1Bs5wJXu6Fgqt2gkzCcaBsujYBHvChgB"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 154,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 154
+          },
+          "output_tokens": 5,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7c32a0e8-f259-4ce9-87c2-6f076636921e",
+      "uuid": "29c7bc63-4b4a-4b5c-96dc-827bc63cb47a",
+      "timestamp": "2026-10-22T15:40:47.516Z",
+      "request_id": "req_011CgHXcHQMSHTVYQwmu4qfL",
+      "thinking_duration_ms": 355,
+      "thinking_display": "updates"
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXcHrPtge2m5jo1fWGC",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01HaudCqcxdMi5ETjdhwH4bK",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 154,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 154
+          },
+          "output_tokens": 5,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7c32a0e8-f259-4ce9-87c2-6f076636921e",
+      "uuid": "0f9744a0-ecf6-47be-9842-577befe9b0c4",
+      "timestamp": "2026-10-22T15:40:47.687Z",
+      "request_id": "req_011CgHXcHQMSHTVYQwmu4qfL",
+      "wire_tool_inputs": {
+        "toolu_01HaudCqcxdMi5ETjdhwH4bK": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01HaudCqcxdMi5ETjdhwH4bK",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "type": "tool_result",
+            "content": "{\"code\":\"rate_limited\",\"message\":\"GitHub rate limit reached; retry in 60s.\",\"retryable\":true,\"retry_after_seconds\":60}",
+            "is_error": true,
+            "tool_use_id": "toolu_01HaudCqcxdMi5ETjdhwH4bK"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7c32a0e8-f259-4ce9-87c2-6f076636921e",
+      "uuid": "859c681f-b39c-4e63-ae11-ad7c3bd4c618",
+      "timestamp": "2026-10-22T15:40:47.690Z",
+      "tool_use_result": "Error: {\"code\":\"rate_limited\",\"message\":\"GitHub rate limit reached; retry in 60s.\",\"retryable\":true,\"retry_after_seconds\":60}",
+      "tool_result_meta": [
+        {
+          "id": "toolu_01HaudCqcxdMi5ETjdhwH4bK",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXcPcunzsnu8mahbRZo",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "I can't tell yet whether cli/cli#14716 is ready to merge. The readiness check failed twice because GitHub's rate limit was hit, and it asked for a retry after 60 seconds. I have no merge state, check results, review status, queue status or head commit for this PR, so I'm not calling it ready. Retrying after the 60-second wait should work.\n\nCLAIM: cannot verify\nNEXT: wait"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 183,
+          "cache_read_input_tokens": 4420,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 183
+          },
+          "output_tokens": 137,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "7c32a0e8-f259-4ce9-87c2-6f076636921e",
+      "uuid": "2854e459-9cc9-4077-a528-3913192d0805",
+      "timestamp": "2026-10-22T15:40:49.678Z",
+      "request_id": "req_011CgHXcPCMf8RdchEGF9zpe"
+    }
+  ]
+}

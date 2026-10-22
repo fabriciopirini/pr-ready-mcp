@@ -1,0 +1,194 @@
+{
+  "task": {
+    "name": "pending",
+    "scenario": "check_pending",
+    "ask": "Is cli/cli#14716 ready to merge?"
+  },
+  "replay": "scenario check_pending",
+  "arm": "tool",
+  "prompt": "Is cli/cli#14716 ready to merge?\n\nPolicy: a PR is ready only when GitHub's merge state is CLEAN, the check rollup on the head commit is SUCCESS (no failing or still-running check, required or not), no review decision blocks, the PR is not in a merge queue, and the head is the commit the person expects. If you cannot verify one of these, say you cannot verify readiness yet.\n\nUse the pr_readiness tool.\n\nAnswer the person in plain language. Then end with exactly two lines:\nCLAIM: ready | not ready | cannot verify | merged | closed\nNEXT: author | reviewer | wait | unknown | none",
+  "started_at": "2026-10-22T15:39:41.038Z",
+  "finished_at": "2026-10-22T15:39:49.528Z",
+  "model": "claude-sonnet-5-5",
+  "final": "Not yet. cli/cli#14716 isn't ready to merge, because one check is still running.\n\n- **Still running:** `build (ubuntu-latest)`, which is a required check. The other 15 checks are done: 8 passed and 7 were skipped. None have failed.\n- **Everything else looks fine:** the merge state is CLEAN and the PR is mergeable. It's approved, it isn't a draft, and it isn't in a merge queue.\n- **Head commit:** `936921fa9e67cdbf78fb25abc6252afabafef056`. You didn't give me an expected commit, so I couldn't check that it's the one you expect.\n\nWait for the build to finish, then check again. If it passes, the PR should be ready, assuming that head commit is the one you expect.\n\nChecked at 2026-10-22 15:39 UTC.\n\nCLAIM: not ready\nNEXT: wait",
+  "num_turns": 2,
+  "duration_ms": 4527,
+  "cost_usd": 0.0161415,
+  "claude_code_version": "2.1.308",
+  "tools": ["mcp__pr-ready__pr_readiness"],
+  "events": [
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXXjfHWf4ryAAmRpaA5",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "tool_use",
+            "id": "toolu_01CAXMkJyMYVJPzWhKkiGnXC",
+            "name": "mcp__pr-ready__pr_readiness",
+            "input": {
+              "pr": "cli/cli#14716"
+            },
+            "caller": {
+              "type": "direct"
+            }
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 2477,
+          "cache_read_input_tokens": 1789,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2477
+          },
+          "output_tokens": 32,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "fba56230-3f23-4b67-a6dd-f7b17cebc78a",
+      "uuid": "9d061dbe-b663-4272-b3ba-83af0e154256",
+      "timestamp": "2026-10-22T15:39:45.996Z",
+      "request_id": "req_011CgHXXjQA8ADF6Cqyfyc9B",
+      "wire_tool_inputs": {
+        "toolu_01CAXMkJyMYVJPzWhKkiGnXC": {
+          "pr": "cli/cli#14716"
+        }
+      },
+      "tool_use_meta": [
+        {
+          "id": "toolu_01CAXMkJyMYVJPzWhKkiGnXC",
+          "display_name": "Pr Readiness",
+          "server_display_name": "pr-ready-mcp",
+          "tool_name": "pr_readiness"
+        }
+      ]
+    },
+    {
+      "type": "user",
+      "message": {
+        "role": "user",
+        "content": [
+          {
+            "tool_use_id": "toolu_01CAXMkJyMYVJPzWhKkiGnXC",
+            "type": "tool_result",
+            "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:39:46.013Z\",\"reasons\":[{\"code\":\"checks_pending\",\"owner\":\"wait\",\"detail\":\"1 of 16 checks have not finished on the head commit; 16 of 16 listed by name.\",\"fix\":\"Wait for them to finish, then call pr_readiness again.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"PENDING\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"IN_PROGRESS\":1,\"SKIPPED\":7,\"SUCCESS\":8},\"failing\":[],\"pending\":[{\"name\":\"build (ubuntu-latest)\",\"required\":true,\"url\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877234\"}]}}}"
+          }
+        ]
+      },
+      "parent_tool_use_id": null,
+      "session_id": "fba56230-3f23-4b67-a6dd-f7b17cebc78a",
+      "uuid": "80246d63-7943-4164-980b-9aa9d6755fd8",
+      "timestamp": "2026-10-22T15:39:46.016Z",
+      "tool_use_result": {
+        "content": "{\"pr\":\"https://github.com/cli/cli/pull/14716\",\"verdict\":\"not_ready\",\"head_sha\":\"936921fa9e67cdbf78fb25abc6252afabafef056\",\"checked_at\":\"2026-10-22T15:39:46.013Z\",\"reasons\":[{\"code\":\"checks_pending\",\"owner\":\"wait\",\"detail\":\"1 of 16 checks have not finished on the head commit; 16 of 16 listed by name.\",\"fix\":\"Wait for them to finish, then call pr_readiness again.\"}],\"facts\":{\"state\":\"OPEN\",\"draft\":false,\"base\":\"trunk\",\"merge_state\":\"CLEAN\",\"mergeable\":\"MERGEABLE\",\"in_merge_queue\":false,\"review_decision\":\"APPROVED\",\"requested_reviewers\":[\"reviewer-1\"],\"checks\":{\"rollup\":\"PENDING\",\"total\":16,\"listed\":16,\"details_complete\":true,\"by_state\":{\"IN_PROGRESS\":1,\"SKIPPED\":7,\"SUCCESS\":8},\"failing\":[],\"pending\":[{\"name\":\"build (ubuntu-latest)\",\"required\":true,\"url\":\"https://github.com/cli/cli/actions/runs/39272694853/job/118128877234\"}]}}}",
+        "structuredContent": {
+          "pr": "https://github.com/cli/cli/pull/14716",
+          "verdict": "not_ready",
+          "head_sha": "936921fa9e67cdbf78fb25abc6252afabafef056",
+          "checked_at": "2026-10-22T15:39:46.013Z",
+          "reasons": [
+            {
+              "code": "checks_pending",
+              "owner": "wait",
+              "detail": "1 of 16 checks have not finished on the head commit; 16 of 16 listed by name.",
+              "fix": "Wait for them to finish, then call pr_readiness again."
+            }
+          ],
+          "facts": {
+            "state": "OPEN",
+            "draft": false,
+            "base": "trunk",
+            "merge_state": "CLEAN",
+            "mergeable": "MERGEABLE",
+            "in_merge_queue": false,
+            "review_decision": "APPROVED",
+            "requested_reviewers": ["reviewer-1"],
+            "checks": {
+              "rollup": "PENDING",
+              "total": 16,
+              "listed": 16,
+              "details_complete": true,
+              "by_state": {
+                "IN_PROGRESS": 1,
+                "SKIPPED": 7,
+                "SUCCESS": 8
+              },
+              "failing": [],
+              "pending": [
+                {
+                  "name": "build (ubuntu-latest)",
+                  "required": true,
+                  "url": "https://github.com/cli/cli/actions/runs/39272694853/job/118128877234"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "tool_result_meta": [
+        {
+          "id": "toolu_01CAXMkJyMYVJPzWhKkiGnXC",
+          "permission_decision": {
+            "decision": "accept",
+            "source": "config",
+            "reason_type": "rule"
+          }
+        }
+      ]
+    },
+    {
+      "type": "assistant",
+      "message": {
+        "model": "claude-sonnet-5-5",
+        "id": "msg_011CgHXXqnNbaRgKujYiVLrR",
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "Not yet. cli/cli#14716 isn't ready to merge, because one check is still running.\n\n- **Still running:** `build (ubuntu-latest)`, which is a required check. The other 15 checks are done: 8 passed and 7 were skipped. None have failed.\n- **Everything else looks fine:** the merge state is CLEAN and the PR is mergeable. It's approved, it isn't a draft, and it isn't in a merge queue.\n- **Head commit:** `936921fa9e67cdbf78fb25abc6252afabafef056`. You didn't give me an expected commit, so I couldn't check that it's the one you expect.\n\nWait for the build to finish, then check again. If it passes, the PR should be ready, assuming that head commit is the one you expect.\n\nChecked at 2026-10-22 15:39 UTC.\n\nCLAIM: not ready\nNEXT: wait"
+          }
+        ],
+        "container": null,
+        "stop_reason": null,
+        "stop_sequence": null,
+        "stop_details": null,
+        "usage": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 505,
+          "cache_read_input_tokens": 4266,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 505
+          },
+          "output_tokens": 292,
+          "service_tier": "standard",
+          "inference_geo": "global",
+          "speed": "standard"
+        },
+        "input_transformations": [],
+        "diagnostics": null,
+        "context_management": null
+      },
+      "parent_tool_use_id": null,
+      "session_id": "fba56230-3f23-4b67-a6dd-f7b17cebc78a",
+      "uuid": "e5359488-60ac-40cc-bdf9-957a3b72e976",
+      "timestamp": "2026-10-22T15:39:49.058Z",
+      "request_id": "req_011CgHXXqV22e4VhcncEwGoS"
+    }
+  ]
+}
